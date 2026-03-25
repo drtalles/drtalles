@@ -1,0 +1,6 @@
+Public assets folder.
+
+Place static files here (images, fonts, icons, etc.).
+Files in this folder are served from the root path, e.g.:
+  public/favicon.ico -> /favicon.ico
+  public/images/photo.jpg -> /images/photo.jpg

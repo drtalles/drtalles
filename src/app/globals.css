@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* ── Brand Colors ── */
+  --color-primary:        #1B4D6E;
+  --color-primary-light:  #2A7AB5;
+  --color-primary-dark:   #0F2D42;
+  --color-accent:         #2EC4B6;
+  --color-accent-light:   #E8F8F5;
+  --color-accent-dark:    #1fa99d;
+
+  /* ── Neutrals ── */
+  --color-neutral-50:     #F8FAFB;
+  --color-neutral-100:    #EEF2F5;
+  --color-neutral-200:    #DDE4EA;
+  --color-neutral-400:    #8FA3B4;
+  --color-neutral-700:    #3D4F5F;
+  --color-neutral-900:    #1A2332;
+
+  --color-white:          #FFFFFF;
+  --color-success:        #27AE60;
+
+  /* ── Typography ── */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body:    "DM Sans", system-ui, sans-serif;
+
+  /* ── Shadows ── */
+  --shadow-card:       0 2px 16px 0 rgba(27, 77, 110, 0.08);
+  --shadow-card-hover: 0 8px 32px 0 rgba(27, 77, 110, 0.16);
+  --shadow-nav:        0 2px 20px rgba(15, 45, 66, 0.12);
+}
+
+/* ─── Base ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-neutral-700);
+  background-color: var(--color-white);
+  line-height: 1.7;
+}
+
+/* ─── Typography ─────────────────────────────────────── */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--color-neutral-900);
+  line-height: 1.18;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); }
+h2 { font-size: clamp(1.875rem, 3.5vw, 2.75rem); }
+h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
+
+/* ─── Layout helpers ─────────────────────────────────── */
+.container-site {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+.section-pad { padding-block: clamp(4.5rem, 8vw, 7rem); }
+
+/* Eyebrow label above section titles */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+.eyebrow::before {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 2px;
+  background: var(--color-accent);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ─── Buttons ─────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8125rem 1.875rem;
+  border-radius: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: var(--color-primary-light);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(42, 122, 181, 0.32);
+}
+.btn-primary:hover {
+  background: var(--color-primary);
+  box-shadow: 0 6px 24px rgba(42, 122, 181, 0.42);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary-light);
+  border-color: var(--color-primary-light);
+}
+.btn-outline:hover {
+  background: var(--color-primary-light);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn-accent {
+  background: var(--color-accent);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(46, 196, 182, 0.32);
+}
+.btn-accent:hover {
+  background: var(--color-accent-dark);
+  box-shadow: 0 6px 24px rgba(46, 196, 182, 0.42);
+  transform: translateY(-2px);
+}
+
+.btn-white {
+  background: #fff;
+  color: var(--color-primary);
+  box-shadow: 0 4px 16px rgba(0,0,0,.12);
+}
+.btn-white:hover {
+  background: var(--color-neutral-50);
+  box-shadow: 0 6px 24px rgba(0,0,0,.18);
+  transform: translateY(-2px);
+}
+
+.btn-outline-white {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,0.65);
+}
+.btn-outline-white:hover {
+  background: rgba(255,255,255,.12);
+  border-color: #fff;
+}
+
+/* ─── Cards ───────────────────────────────────────────── */
+.card-base {
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.22s ease, transform 0.22s ease;
+}
+.card-base:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
+}
+
+/* ─── Gradient backgrounds ────────────────────────────── */
+.bg-hero {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 60%, #1d6b8a 100%);
+}
+.bg-robotic {
+  background: linear-gradient(135deg, var(--color-accent-light) 0%, #d4f4f0 60%, var(--color-neutral-50) 100%);
+}
+.bg-cta {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, #163e5a 50%, var(--color-primary) 100%);
+}
+
+/* ─── WhatsApp pulse animation ───────────────────────── */
+@keyframes wa-pulse {
+  0%   { transform: scale(1); opacity: 0.65; }
+  70%  { transform: scale(1.55); opacity: 0; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+.wa-pulse::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #25D366;
+  animation: wa-pulse 2.4s ease-out infinite;
+  z-index: -1;
+}
+
+/* ─── Fade-in animations (JS-toggled) ────────────────── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Focus / a11y ────────────────────────────────────── */
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Scrollbar ───────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-200);
+  border-radius: 3px;
+}
