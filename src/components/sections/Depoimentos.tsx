@@ -1,14 +1,31 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { Star, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 
 const DEPOIMENTOS = [
-  { nome: "Carlos M.",   texto: "Atendimento excelente, muito atencioso e profissional. Me senti muito bem atendido e com todas as dúvidas esclarecidas.",  estrelas: 5 },
-  { nome: "Roberto S.",  texto: "Consulta pontual, explicou tudo com clareza e segurança. Recomendo o Dr. Talles sem hesitar.",                               estrelas: 5 },
-  { nome: "José A.",     texto: "Profissional competente e humano. Me senti acolhido desde o primeiro momento, ótimo médico.",                                estrelas: 5 },
-  { nome: "Marcos L.",   texto: "Muito satisfeito com o atendimento. Médico atencioso, explica o diagnóstico de forma simples e clara.",                       estrelas: 5 },
-  { nome: "Fernando P.", texto: "Excelente profissional! Agenda respeitada, consulta completa e tratamento personalizado.",                                     estrelas: 5 },
+  {
+    nome: "Eduardo Washington",
+    cargo: "Paciente",
+    foto: "/depoimentos/eduardo-washington.png",
+    texto: "Um excelente médico, profissional e principalmente amigo. Trata com seriedade o trabalho e cativa o paciente com sua empatia. Muito satisfeito em seu atendimento, nota 10!",
+    estrelas: 5,
+  },
+  {
+    nome: "Jacqueline Vieira",
+    cargo: "Paciente",
+    foto: "/depoimentos/jacqueline-vieira.png",
+    texto: "Exceelente médico! Atencioso, explica tudo direitinho e deixa super a vontade. Recomendo sem dúvidas o melhor urologista de Campina Grande.",
+    estrelas: 5,
+  },
+  {
+    nome: "A F",
+    cargo: "Paciente",
+    foto: "/depoimentos/af.png",
+    texto: "Profissional de extrema qualidade muito atencioso, amigo, compenetrado na avaliação. Nota 10 eu indico sem questionar !",
+    estrelas: 5,
+  },
 ];
 
 function Stars({ count }: { count: number }) {
@@ -134,21 +151,22 @@ export default function Depoimentos() {
                         width: "2.75rem",
                         height: "2.75rem",
                         borderRadius: "50%",
-                        background: "linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        color: "#fff",
-                        fontWeight: 700,
-                        fontSize: "1rem",
-                        fontFamily: "var(--font-display)",
+                        overflow: "hidden",
                         flexShrink: 0,
+                        background: "linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%)",
                       }}
                     >
-                      {dep.nome[0]}
+                      <Image
+                        src={dep.foto}
+                        alt={dep.nome}
+                        width={44}
+                        height={44}
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      />
                     </div>
                     <div>
                       <p style={{ margin: "0 0 0.25rem", fontWeight: 700, fontSize: "0.9375rem", color: "var(--color-neutral-900)" }}>{dep.nome}</p>
+                      <p style={{ margin: "0 0 0.25rem", fontSize: "0.8125rem", color: "var(--color-neutral-400)" }}>{dep.cargo}</p>
                       <Stars count={dep.estrelas} />
                     </div>
                   </div>
