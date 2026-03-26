@@ -239,7 +239,7 @@ export default function AreasAtuacao() {
             <p data-fadein className="eyebrow" style={{ justifyContent: "center" }}>
               Especialidades
             </p>
-            <h2 data-fadein style={{ marginBottom: "1rem" }}>
+            <h2 data-fadein style={{ marginBottom: "1rem", fontSize: "clamp(2.125rem, 3.5vw, 3.25rem)" }}>
               Atuação focada em saúde do homem e urologia
             </h2>
             <p data-fadein style={{ color: "var(--color-neutral-700)", lineHeight: 1.75 }}>

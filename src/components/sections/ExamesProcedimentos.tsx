@@ -53,7 +53,7 @@ export default function ExamesProcedimentos() {
           {/* Left: text */}
           <div style={{ position: "sticky", top: "6rem" }}>
             <p className="eyebrow fade-up">Diagnóstico e tratamento</p>
-            <h2 className="fade-up" style={{ marginBottom: "1.25rem" }}>
+            <h2 className="fade-up" style={{ marginBottom: "1.25rem", fontSize: "clamp(2.125rem, 3.5vw, 3.25rem)" }}>
               Exames, procedimentos e acompanhamento com foco em clareza diagnóstica
             </h2>
             <p className="fade-up" style={{ lineHeight: 1.8, marginBottom: "2rem" }}>

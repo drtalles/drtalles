@@ -329,7 +329,7 @@ export default function Hero() {
 
         .hero-name-big {
           font-family: var(--font-display);
-          font-size: clamp(3.25rem, 8vw, 6.75rem);
+          font-size: clamp(4.5rem, 11vw, 9.5rem);
           font-weight: 700;
           line-height: 1.0;
           letter-spacing: -0.03em;
@@ -393,7 +393,8 @@ export default function Hero() {
           color: var(--color-primary-dark);
           margin-bottom: 1.25rem;
           line-height: 1.08;
-          font-size: clamp(1.875rem, 3.6vw, 2.875rem);
+          font-size: clamp(2.125rem, 4vw, 3.25rem);
+          font-weight: 700;
           letter-spacing: -0.015em;
         }
 
@@ -412,7 +413,7 @@ export default function Hero() {
             left: 0; transform: none;
           }
           .hero-photo-col { display: none !important; }
-          .hero-name-big  { font-size: clamp(2.5rem, 10vw, 4rem); }
+          .hero-name-big  { font-size: clamp(3rem, 12vw, 5rem); }
         }
 
         /* Scroll cue */

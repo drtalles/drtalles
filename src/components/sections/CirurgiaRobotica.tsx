@@ -207,7 +207,7 @@ export default function CirurgiaRobotica() {
                 style={{
                   color: "var(--color-primary-dark)",
                   marginBottom: "1.75rem",
-                  fontSize: "clamp(1.875rem, 3vw, 2.75rem)",
+                  fontSize: "clamp(2.125rem, 3.5vw, 3.25rem)",
                   lineHeight: 1.10,
                   letterSpacing: "-0.015em",
                 }}

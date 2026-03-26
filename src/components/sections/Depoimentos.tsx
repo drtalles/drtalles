@@ -69,7 +69,7 @@ export default function Depoimentos() {
         {/* Header */}
         <div style={{ textAlign: "center", maxWidth: "560px", margin: "0 auto 3.5rem" }}>
           <p className="eyebrow fade-up" style={{ justifyContent: "center" }}>Avaliações</p>
-          <h2 className="fade-up" style={{ marginBottom: "1rem" }}>
+          <h2 className="fade-up" style={{ marginBottom: "1rem", fontSize: "clamp(2.125rem, 3.5vw, 3.25rem)" }}>
             Confiança construída no atendimento
           </h2>
           <p className="fade-up" style={{ margin: "0 auto", color: "var(--color-neutral-700)" }}>

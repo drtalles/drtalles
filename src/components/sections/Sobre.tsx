@@ -214,7 +214,7 @@ export default function Sobre() {
                   style={{
                     color: "#fff",
                     marginBottom: "1.75rem",
-                    fontSize: "clamp(1.75rem, 2.8vw, 2.5rem)",
+                    fontSize: "clamp(2.125rem, 3.5vw, 3.25rem)",
                     lineHeight: 1.12,
                     letterSpacing: "-0.015em",
                   }}
