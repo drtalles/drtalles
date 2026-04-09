@@ -1,181 +1,609 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { MapPin, Phone, Mail, CalendarCheck, MessageCircle, ExternalLink } from "lucide-react";
+import {
+  CalendarCheck,
+  Clock3,
+  ExternalLink,
+  MapPin,
+  MessageCircle,
+  Phone,
+} from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contato e Agendamento",
+  title: "Agende sua Consulta | Dr. Talles Leandro",
   description:
-    "Entre em contato com Dr. Talles Leandro para agendar sua consulta de urologia em Campina Grande/PB.",
+    "Entre em contato com o Dr. Talles Leandro e agende sua consulta de forma pratica por WhatsApp, telefone ou agendamento online.",
 };
 
 const DOCTORALIA_URL =
   "https://www.doctoralia.com.br/talles-leandro-oliveira/urologista/campina-grande?utm_id=34199&utm_source=widget-doctor-34199&utm_medium=big&utm_campaign=&utm_content=#highlight-calendar";
 const WA_URL = "https://wa.me/5583999999999";
+const MAP_URL =
+  "https://www.google.com/maps/search/?api=1&query=R.+Dep.+Alvaro+Gaudencio,+281,+Centro,+Campina+Grande,+PB,+58400-243";
+
+const PHONES = ["(83) 3142-1505", "(83) 3142-1507", "(83) 9 8828-7705"];
+const CLINIC_NAME = "Clinica Vitta";
+const ADDRESS = "R. Dep. Alvaro Gaudencio, 281 - Centro - CEP: 58400-243";
+const CITY = "Campina Grande, PB";
+const HOURS = "De segunda a sexta-feira, das 07:30 as 17:30";
+const CRM_LABEL = "CRM-PB 5970";
+const RQE_LABEL = "RQE em atualizacao";
 
 export default function ContatoPage() {
   return (
     <>
       <Header />
-      <main>
+      <main id="contato-page">
+        <style>{`
+          .ct-hero {
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+            padding-top: calc(76px + clamp(2rem, 4.6vw, 4rem));
+            padding-bottom: clamp(3.2rem, 7vw, 5.8rem);
+          }
+
+          .ct-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+              radial-gradient(circle at 15% 20%, rgba(27,77,110,0.09) 0%, transparent 31%),
+              radial-gradient(circle at 85% 11%, rgba(46,196,182,0.16) 0%, transparent 34%),
+              radial-gradient(circle, rgba(27,77,110,0.11) 1px, transparent 1px);
+            background-size: auto, auto, 24px 24px;
+            pointer-events: none;
+          }
+
+          .ct-hero-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 430px);
+            gap: clamp(1.5rem, 4vw, 3rem);
+            align-items: center;
+          }
+
+          .ct-breadcrumb {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin-bottom: 1rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(27,77,110,0.06);
+            border: 1px solid rgba(27,77,110,0.1);
+            font-size: 0.75rem;
+            color: var(--color-neutral-700);
+          }
+
+          .ct-breadcrumb a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+          }
+
+          .ct-breadcrumb a:hover {
+            text-decoration: underline;
+          }
+
+          .ct-title {
+            margin-bottom: 0.85rem;
+            line-height: 1.08;
+            font-size: clamp(2.2rem, 5vw, 3.9rem);
+            background: linear-gradient(90deg, #1B4D6E 0%, #0F2D42 44%, #2EC4B6 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+          }
+
+          .ct-subtitle {
+            margin: 0 0 0.95rem;
+            color: var(--color-neutral-900);
+            font-size: clamp(1rem, 1.62vw, 1.2rem);
+            line-height: 1.58;
+            max-width: 56ch;
+          }
+
+          .ct-text {
+            margin: 0;
+            color: var(--color-neutral-700);
+            line-height: 1.82;
+            max-width: 62ch;
+          }
+
+          .ct-credentials {
+            margin-top: 1.28rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+          }
+
+          .ct-tag {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 999px;
+            padding: 0.42rem 0.76rem;
+            background: var(--color-neutral-50);
+            border: 1px solid var(--color-neutral-200);
+            color: var(--color-primary-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            line-height: 1;
+          }
+
+          .ct-hero-actions {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.85rem;
+          }
+
+          .ct-hero-media {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            min-height: 420px;
+          }
+
+          .ct-hero-media::before {
+            content: "";
+            position: absolute;
+            inset: 5% 7% 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(42,122,181,0.22) 0%, rgba(46,196,182,0.16) 47%, transparent 75%);
+          }
+
+          .ct-hero-media img {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 390px;
+            height: auto;
+            filter: drop-shadow(0 28px 46px rgba(27,77,110,0.23));
+          }
+
+          .ct-main-channels {
+            background: var(--color-neutral-50);
+          }
+
+          .ct-main-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+          }
+
+          .ct-main-card {
+            border-radius: 1rem;
+            border: 1px solid var(--color-neutral-200);
+            background: #fff;
+            padding: 1.25rem;
+            box-shadow: 0 10px 26px rgba(27,77,110,0.06);
+            transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+          }
+
+          .ct-main-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(46,196,182,0.72);
+            box-shadow: 0 14px 30px rgba(27,77,110,0.12);
+          }
+
+          .ct-main-icon {
+            width: 2.7rem;
+            height: 2.7rem;
+            border-radius: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            margin-bottom: 0.75rem;
+          }
+
+          .ct-main-card h2 {
+            margin: 0 0 0.5rem;
+            font-size: 1.08rem;
+            color: var(--color-primary-dark);
+            font-family: var(--font-body);
+            line-height: 1.36;
+          }
+
+          .ct-main-card p {
+            margin: 0;
+            color: var(--color-neutral-700);
+            font-size: 0.9rem;
+            line-height: 1.7;
+          }
+
+          .ct-main-actions {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+          }
+
+          .ct-info {
+            background: #fff;
+          }
+
+          .ct-info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+          }
+
+          .ct-info-card {
+            border-radius: 1rem;
+            border: 1px solid var(--color-neutral-200);
+            background: linear-gradient(152deg, rgba(248,250,251,0.95), rgba(255,255,255,0.98));
+            padding: 1.2rem;
+          }
+
+          .ct-info-head {
+            display: flex;
+            align-items: center;
+            gap: 0.62rem;
+            margin-bottom: 0.7rem;
+          }
+
+          .ct-info-head span {
+            width: 2.3rem;
+            height: 2.3rem;
+            border-radius: 0.7rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1B4D6E 0%, #2EC4B6 100%);
+            color: #fff;
+            flex-shrink: 0;
+          }
+
+          .ct-info-head h3 {
+            margin: 0;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-primary-dark);
+          }
+
+          .ct-info-card p {
+            margin: 0;
+            color: var(--color-neutral-700);
+            line-height: 1.7;
+            font-size: 0.9rem;
+          }
+
+          .ct-phone-list {
+            list-style: none;
+            margin: 0.4rem 0 0;
+            padding: 0;
+            display: grid;
+            gap: 0.36rem;
+          }
+
+          .ct-phone-list a {
+            text-decoration: none;
+            color: var(--color-primary-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+          }
+
+          .ct-phone-list a:hover {
+            text-decoration: underline;
+          }
+
+          .ct-address-link {
+            margin-top: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            color: var(--color-primary);
+            font-size: 0.86rem;
+            font-weight: 700;
+            text-decoration: none;
+          }
+
+          .ct-address-link:hover {
+            text-decoration: underline;
+          }
+
+          .ct-final {
+            background: linear-gradient(135deg, var(--color-primary-dark) 0%, #163e5a 50%, var(--color-primary) 100%);
+            position: relative;
+            overflow: hidden;
+          }
+
+          .ct-final::before {
+            content: "";
+            position: absolute;
+            top: -26%;
+            left: -11%;
+            width: 610px;
+            height: 610px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(46,196,182,0.08) 0%, transparent 65%);
+            pointer-events: none;
+          }
+
+          .ct-final-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 760px;
+            margin-inline: auto;
+            text-align: center;
+          }
+
+          .ct-final-actions {
+            margin-top: 1.95rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.9rem;
+          }
+
+          .ct-note {
+            margin-top: 1.45rem;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.8rem;
+            letter-spacing: 0.03em;
+          }
+
+          @media (max-width: 980px) {
+            .ct-info-grid {
+              grid-template-columns: 1fr;
+            }
+          }
+
+          @media (max-width: 860px) {
+            .ct-hero-grid,
+            .ct-main-grid {
+              grid-template-columns: 1fr;
+            }
+
+            .ct-hero-media {
+              min-height: 0;
+            }
+
+            .ct-hero-media img {
+              max-width: 340px;
+            }
+          }
+        `}</style>
+
         {/* Hero */}
-        <section
-          style={{
-            background: "linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%)",
-            paddingBlock: "calc(76px + 3.5rem) 4rem",
-          }}
-        >
-          <div className="container-site">
-            <p className="eyebrow" style={{ color: "var(--color-accent)" }}>Fale conosco</p>
-            <h1 style={{ color: "#fff", maxWidth: "600px", marginBottom: "1rem" }}>
-              Contato e Agendamento
-            </h1>
-            <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "1.125rem", maxWidth: "50ch" }}>
-              Agende sua consulta online ou entre em contato diretamente.
-            </p>
+        <section className="ct-hero">
+          <div className="container-site ct-hero-grid">
+            <div>
+              <nav className="ct-breadcrumb" aria-label="Breadcrumb">
+                <Link href="/">Inicio</Link>
+                <span>/</span>
+                <span aria-current="page">Contato e agendamento</span>
+              </nav>
+
+              <p className="eyebrow">Contato rapido</p>
+              <h1 className="ct-title">Agende sua consulta</h1>
+              <p className="ct-subtitle">
+                Escolha o canal mais pratico para entrar em contato e organizar
+                seu atendimento.
+              </p>
+              <p className="ct-text">
+                Se voce deseja agendar uma consulta, exame ou obter mais
+                informacoes sobre o atendimento, utilize o canal mais
+                conveniente. A proposta desta pagina e tornar esse contato mais
+                simples, rapido e direto.
+              </p>
+
+              <div className="ct-credentials">
+                <span className="ct-tag">{CRM_LABEL}</span>
+                <span className="ct-tag">{RQE_LABEL}</span>
+              </div>
+
+              <div className="ct-hero-actions">
+                <a
+                  href={DOCTORALIA_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                >
+                  <CalendarCheck size={17} />
+                  Agendar online
+                </a>
+              </div>
+            </div>
+
+            <div className="ct-hero-media" aria-hidden>
+              <Image
+                src="/img/dr-talles-1.png"
+                alt="Dr. Talles Leandro"
+                width={430}
+                height={560}
+                priority
+              />
+            </div>
           </div>
         </section>
 
-        {/* Content */}
-        <section className="section-pad" style={{ background: "var(--color-neutral-50)" }}>
-          <div className="container-site">
-            <div
+        {/* Blocos principais: agendamento + whatsapp */}
+        <section className="section-pad ct-main-channels">
+          <div className="container-site ct-main-grid">
+            <article className="ct-main-card">
+              <span
+                className="ct-main-icon"
+                style={{ background: "linear-gradient(135deg, #1B4D6E 0%, #2EC4B6 100%)" }}
+                aria-hidden
+              >
+                <CalendarCheck size={18} />
+              </span>
+              <h2>Agendamento online</h2>
+              <p>
+                O agendamento online oferece mais praticidade no primeiro contato
+                e ajuda a organizar o atendimento de forma mais rapida e objetiva.
+              </p>
+              <div className="ct-main-actions">
+                <a
+                  href={DOCTORALIA_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-accent"
+                >
+                  Agendar online
+                  <ExternalLink size={14} />
+                </a>
+              </div>
+            </article>
+
+            <article className="ct-main-card">
+              <span
+                className="ct-main-icon"
+                style={{ background: "#25D366" }}
+                aria-hidden
+              >
+                <MessageCircle size={18} />
+              </span>
+              <h2>WhatsApp</h2>
+              <p>
+                Para duvidas iniciais e orientacoes rapidas sobre o atendimento,
+                o WhatsApp pode funcionar como um canal de apoio ao agendamento.
+              </p>
+              <div className="ct-main-actions">
+                <a
+                  href={WA_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                  style={{ background: "#25D366", border: "none", boxShadow: "0 4px 16px rgba(37,211,102,0.32)" }}
+                >
+                  Falar no WhatsApp
+                </a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        {/* Blocos informativos: telefone, endereco, horario */}
+        <section className="section-pad ct-info">
+          <div className="container-site ct-info-grid">
+            <article className="ct-info-card">
+              <div className="ct-info-head">
+                <span aria-hidden>
+                  <Phone size={16} />
+                </span>
+                <h3>Telefones de contato</h3>
+              </div>
+              <p>
+                <strong>{CLINIC_NAME}</strong>
+              </p>
+              <ul className="ct-phone-list">
+                {PHONES.map((phone) => (
+                  <li key={phone}>
+                    <a href={`tel:${phone.replace(/[^\d+]/g, "")}`}>{phone}</a>
+                  </li>
+                ))}
+              </ul>
+              <p style={{ marginTop: "0.7rem", fontSize: "0.84rem", color: "var(--color-neutral-400)" }}>
+                Entre em contato para informacoes sobre atendimento e organizacao da agenda.
+              </p>
+            </article>
+
+            <article className="ct-info-card">
+              <div className="ct-info-head">
+                <span aria-hidden>
+                  <MapPin size={16} />
+                </span>
+                <h3>Endereco e localizacao</h3>
+              </div>
+              <p>
+                <strong>{CLINIC_NAME}</strong>
+              </p>
+              <p style={{ marginTop: "0.35rem" }}>
+                {ADDRESS}
+                <br />
+                {CITY}
+              </p>
+              <a
+                href={MAP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ct-address-link"
+              >
+                Abrir rota no mapa
+                <ExternalLink size={13} />
+              </a>
+            </article>
+
+            <article className="ct-info-card">
+              <div className="ct-info-head">
+                <span aria-hidden>
+                  <Clock3 size={16} />
+                </span>
+                <h3>Horarios de atendimento</h3>
+              </div>
+              <p>
+                Consulte os horarios disponiveis e escolha o melhor momento para
+                organizar seu atendimento.
+              </p>
+              <p style={{ marginTop: "0.75rem", color: "var(--color-primary-dark)", fontWeight: 700 }}>
+                {HOURS}
+              </p>
+            </article>
+          </div>
+        </section>
+
+        {/* CTA final */}
+        <section id="agendar-consulta" className="section-pad ct-final">
+          <div className="container-site ct-final-inner">
+            <p className="eyebrow" style={{ justifyContent: "center", color: "var(--color-accent)" }}>
+              Conversao
+            </p>
+            <h2 style={{ color: "#fff", marginBottom: "1rem" }}>
+              Atendimento com mais praticidade
+            </h2>
+            <p
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-                gap: "2rem",
+                margin: 0,
+                color: "rgba(255,255,255,0.76)",
+                lineHeight: 1.82,
+                maxWidth: "58ch",
+                marginInline: "auto",
               }}
             >
-              {/* Agendamento online */}
-              <div
-                style={{
-                  background: "white",
-                  borderRadius: "1rem",
-                  padding: "2rem",
-                  border: "1px solid var(--color-neutral-100)",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "1.25rem",
-                }}
-              >
-                <div
-                  style={{
-                    width: "3.25rem",
-                    height: "3.25rem",
-                    borderRadius: "0.875rem",
-                    background: "linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <CalendarCheck size={22} color="white" />
-                </div>
-                <div>
-                  <h2 style={{ fontSize: "1.25rem", marginBottom: "0.5rem" }}>Agendar online</h2>
-                  <p style={{ fontSize: "0.9375rem", lineHeight: 1.65, marginBottom: "1.25rem", color: "var(--color-neutral-700)" }}>
-                    Agende sua consulta de forma prática pelo Doctoralia.
-                  </p>
-                  <a
-                    href={DOCTORALIA_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-accent"
-                    style={{ fontSize: "0.9375rem" }}
-                  >
-                    Agendar no Doctoralia
-                    <ExternalLink size={15} />
-                  </a>
-                </div>
-              </div>
+              A proposta do novo site e facilitar o caminho entre a busca do
+              paciente e o agendamento da consulta, com canais claros,
+              orientacao objetiva e acesso rapido as principais informacoes.
+            </p>
 
-              {/* WhatsApp */}
-              <div
-                style={{
-                  background: "white",
-                  borderRadius: "1rem",
-                  padding: "2rem",
-                  border: "1px solid var(--color-neutral-100)",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "1.25rem",
-                }}
+            <div className="ct-final-actions">
+              <a
+                href={DOCTORALIA_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-accent"
+                style={{ fontSize: "1rem", padding: "0.98rem 1.95rem" }}
               >
-                <div
-                  style={{
-                    width: "3.25rem",
-                    height: "3.25rem",
-                    borderRadius: "0.875rem",
-                    background: "#25D366",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <MessageCircle size={22} color="white" fill="white" stroke="none" />
-                </div>
-                <div>
-                  <h2 style={{ fontSize: "1.25rem", marginBottom: "0.5rem" }}>WhatsApp</h2>
-                  <p style={{ fontSize: "0.9375rem", lineHeight: 1.65, marginBottom: "1.25rem", color: "var(--color-neutral-700)" }}>
-                    Fale diretamente pelo WhatsApp para dúvidas e informações.
-                  </p>
-                  <a
-                    href={WA_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary"
-                    style={{ fontSize: "0.9375rem", background: "#25D366", border: "none", boxShadow: "0 4px 16px rgba(37,211,102,0.32)" }}
-                  >
-                    Falar pelo WhatsApp
-                  </a>
-                </div>
-              </div>
-
-              {/* Info */}
-              <div
-                style={{
-                  background: "white",
-                  borderRadius: "1rem",
-                  padding: "2rem",
-                  border: "1px solid var(--color-neutral-100)",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "1.25rem",
-                }}
+                <CalendarCheck size={18} />
+                Agendar consulta
+                <ExternalLink size={14} />
+              </a>
+              <a
+                href={WA_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline-white"
+                style={{ fontSize: "1rem", padding: "0.98rem 1.95rem" }}
               >
-                <div
-                  style={{
-                    width: "3.25rem",
-                    height: "3.25rem",
-                    borderRadius: "0.875rem",
-                    background: "linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <MapPin size={22} color="white" />
-                </div>
-                <div>
-                  <h2 style={{ fontSize: "1.25rem", marginBottom: "1rem" }}>Informações</h2>
-                  <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.875rem" }}>
-                    <li style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", fontSize: "0.9375rem" }}>
-                      <MapPin size={16} style={{ color: "var(--color-accent-dark)", flexShrink: 0, marginTop: "3px" }} />
-                      <span>[Endereço da clínica], Campina Grande, PB</span>
-                    </li>
-                    <li style={{ display: "flex", alignItems: "center", gap: "0.75rem", fontSize: "0.9375rem" }}>
-                      <Phone size={16} style={{ color: "var(--color-accent-dark)", flexShrink: 0 }} />
-                      <span>(83) 9999-9999</span>
-                    </li>
-                    <li style={{ display: "flex", alignItems: "center", gap: "0.75rem", fontSize: "0.9375rem" }}>
-                      <Mail size={16} style={{ color: "var(--color-accent-dark)", flexShrink: 0 }} />
-                      <span>contato@drtallesleandro.com.br</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+                <MessageCircle size={18} />
+                Falar no WhatsApp
+              </a>
             </div>
+
+            <p className="ct-note">
+              {CRM_LABEL} · {RQE_LABEL}
+            </p>
           </div>
         </section>
       </main>
