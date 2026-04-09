@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -39,135 +37,73 @@ export default function ContatoPage() {
       <Header />
       <main id="contato-page">
         <style>{`
-          .ct-hero {
-            position: relative;
-            overflow: hidden;
-            background: #fff;
-            padding-top: calc(76px + clamp(2rem, 4.6vw, 4rem));
-            padding-bottom: clamp(3.2rem, 7vw, 5.8rem);
-          }
-
-          .ct-hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image:
-              radial-gradient(circle at 15% 20%, rgba(27,77,110,0.09) 0%, transparent 31%),
-              radial-gradient(circle at 85% 11%, rgba(46,196,182,0.16) 0%, transparent 34%),
-              radial-gradient(circle, rgba(27,77,110,0.11) 1px, transparent 1px);
-            background-size: auto, auto, 24px 24px;
-            pointer-events: none;
-          }
-
-          .ct-hero-grid {
+          .ct-hero-intro {
             position: relative;
             z-index: 1;
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(0, 430px);
-            gap: clamp(1.5rem, 4vw, 3rem);
-            align-items: center;
+            max-width: 860px;
           }
 
-          .ct-breadcrumb {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            margin-bottom: 1rem;
-            padding: 0.35rem 0.7rem;
+          .ct-hero-intro .internal-hero-title {
+            max-width: 100%;
+            white-space: nowrap;
+            text-wrap: nowrap;
+          }
+
+          .ct-hero-wave {
+            position: absolute;
+            right: -90px;
+            bottom: -124px;
+            width: min(56vw, 760px);
+            height: min(30vw, 360px);
             border-radius: 999px;
-            background: rgba(27,77,110,0.06);
-            border: 1px solid rgba(27,77,110,0.1);
-            font-size: 0.75rem;
-            color: var(--color-neutral-700);
+            pointer-events: none;
+            border: 1px solid rgba(255,255,255,0.16);
+            transform: rotate(-10deg);
+            opacity: 0.42;
           }
 
-          .ct-breadcrumb a {
-            color: var(--color-primary);
-            text-decoration: none;
-            font-weight: 600;
+          .ct-hero-wave::before {
+            content: "";
+            position: absolute;
+            inset: 14px;
+            border-radius: inherit;
+            border: 1px solid rgba(125,223,215,0.42);
           }
 
-          .ct-breadcrumb a:hover {
-            text-decoration: underline;
+          .ct-hero-wave::after {
+            content: "";
+            position: absolute;
+            inset: 28px;
+            border-radius: inherit;
+            border: 1px solid rgba(255,255,255,0.16);
           }
 
-          .ct-title {
-            margin-bottom: 0.85rem;
-            line-height: 1.08;
-            font-size: clamp(2.2rem, 5vw, 3.9rem);
-            background: linear-gradient(90deg, #1B4D6E 0%, #0F2D42 44%, #2EC4B6 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-          }
-
-          .ct-subtitle {
-            margin: 0 0 0.95rem;
-            color: var(--color-neutral-900);
-            font-size: clamp(1rem, 1.62vw, 1.2rem);
-            line-height: 1.58;
-            max-width: 56ch;
-          }
-
-          .ct-text {
-            margin: 0;
-            color: var(--color-neutral-700);
-            line-height: 1.82;
-            max-width: 62ch;
-          }
-
-          .ct-credentials {
-            margin-top: 1.28rem;
+          .ct-hero-meta {
+            margin-top: 1.35rem;
             display: flex;
             flex-wrap: wrap;
-            gap: 0.65rem;
+            gap: 0.55rem;
           }
 
-          .ct-tag {
+          .ct-hero-meta span {
             display: inline-flex;
             align-items: center;
             border-radius: 999px;
-            padding: 0.42rem 0.76rem;
-            background: var(--color-neutral-50);
-            border: 1px solid var(--color-neutral-200);
-            color: var(--color-primary-dark);
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.08);
+            color: rgba(235,247,255,0.9);
+            padding: 0.42rem 0.78rem;
             font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.03em;
-            line-height: 1;
+            font-weight: 600;
+            letter-spacing: 0.01em;
           }
 
           .ct-hero-actions {
-            margin-top: 1.5rem;
+            margin-top: 1.35rem;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             gap: 0.85rem;
-          }
-
-          .ct-hero-media {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            min-height: 420px;
-          }
-
-          .ct-hero-media::before {
-            content: "";
-            position: absolute;
-            inset: 5% 7% 0;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(42,122,181,0.22) 0%, rgba(46,196,182,0.16) 47%, transparent 75%);
-          }
-
-          .ct-hero-media img {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            max-width: 390px;
-            height: auto;
-            filter: drop-shadow(0 28px 46px rgba(27,77,110,0.23));
           }
 
           .ct-main-channels {
@@ -360,47 +296,40 @@ export default function ContatoPage() {
           }
 
           @media (max-width: 860px) {
-            .ct-hero-grid,
+            .ct-hero-intro .internal-hero-title {
+              white-space: normal;
+              text-wrap: balance;
+            }
+
             .ct-main-grid {
               grid-template-columns: 1fr;
             }
 
-            .ct-hero-media {
-              min-height: 0;
-            }
-
-            .ct-hero-media img {
-              max-width: 340px;
+            .ct-hero-wave {
+              display: none;
             }
           }
         `}</style>
 
         {/* Hero */}
-        <section className="ct-hero">
-          <div className="container-site ct-hero-grid">
-            <div>
-              <nav className="ct-breadcrumb" aria-label="Breadcrumb">
-                <Link href="/">Inicio</Link>
-                <span>/</span>
-                <span aria-current="page">Contato e agendamento</span>
-              </nav>
+        <section className="internal-hero" data-header-theme="dark">
+          <div className="internal-hero-glow" aria-hidden />
+          <div className="internal-hero-lines" aria-hidden />
+          <div className="ct-hero-wave" aria-hidden />
 
-              <p className="eyebrow">Contato rapido</p>
-              <h1 className="ct-title">Agende sua consulta</h1>
-              <p className="ct-subtitle">
-                Escolha o canal mais pratico para entrar em contato e organizar
-                seu atendimento.
-              </p>
-              <p className="ct-text">
-                Se voce deseja agendar uma consulta, exame ou obter mais
-                informacoes sobre o atendimento, utilize o canal mais
-                conveniente. A proposta desta pagina e tornar esse contato mais
-                simples, rapido e direto.
+          <div className="container-site">
+            <div className="internal-hero-inner ct-hero-intro">
+              <p className="internal-hero-kicker">Contato e agendamento</p>
+              <h1 className="internal-hero-title">Agende sua consulta</h1>
+              <p className="internal-hero-description">
+                Escolha o canal mais prático para entrar em contato, organizar
+                seu atendimento e esclarecer informações sobre consulta, exames
+                e orientações iniciais.
               </p>
 
-              <div className="ct-credentials">
-                <span className="ct-tag">{CRM_LABEL}</span>
-                <span className="ct-tag">{RQE_LABEL}</span>
+              <div className="ct-hero-meta">
+                <span>{CRM_LABEL}</span>
+                <span>{RQE_LABEL}</span>
               </div>
 
               <div className="ct-hero-actions">
@@ -414,16 +343,6 @@ export default function ContatoPage() {
                   Agendar online
                 </a>
               </div>
-            </div>
-
-            <div className="ct-hero-media" aria-hidden>
-              <Image
-                src="/img/dr-talles-1.png"
-                alt="Dr. Talles Leandro"
-                width={430}
-                height={560}
-                priority
-              />
             </div>
           </div>
         </section>

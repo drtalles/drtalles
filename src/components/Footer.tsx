@@ -240,7 +240,7 @@ export default function Footer() {
           }}
         >
           <p style={{ fontSize: "0.8125rem", margin: 0, color: "rgba(255,255,255,0.45)" }}>
-            © 2025 Dr. Talles Leandro — Todos os direitos reservados
+            © 2026 Dr. Talles Leandro — Todos os direitos reservados
           </p>
           <p style={{ fontSize: "0.8125rem", margin: 0, color: "rgba(255,255,255,0.45)" }}>
             Desenvolvido por{" "}
