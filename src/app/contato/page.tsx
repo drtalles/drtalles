@@ -12,9 +12,37 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Agende sua Consulta | Dr. Talles Leandro",
+  title: "Agendar Consulta com Urologista em Campina Grande | Dr. Talles Leandro",
   description:
-    "Entre em contato com o Dr. Talles Leandro e agende sua consulta de forma prática por WhatsApp, telefone ou agendamento online.",
+    "Agende sua consulta de urologia em Campina Grande/PB com o Dr. Talles Leandro. Atendimento na Clínica Vitta, R. Dep. Álvaro Gaudêncio, 281 — Centro. WhatsApp: (83) 9 8828-7705. Seg–Sex 07h30–17h30.",
+  keywords: [
+    "agendar consulta urologista Campina Grande",
+    "consulta urologia Campina Grande",
+    "Clínica Vitta Campina Grande",
+    "telefone urologista Campina Grande",
+    "endereço urologista Campina Grande",
+    "WhatsApp urologista Campina Grande",
+    "Dr. Talles Leandro contato",
+    "marcar consulta urologia PB",
+  ],
+  alternates: {
+    canonical: "https://drtallesleandro.com.br/contato",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://drtallesleandro.com.br/contato",
+    title: "Agendar Consulta com Urologista em Campina Grande | Dr. Talles Leandro",
+    description:
+      "Agende sua consulta na Clínica Vitta, Campina Grande/PB. WhatsApp, telefone ou agendamento online pelo Doctoralia.",
+    images: [
+      {
+        url: "/img/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Agendar Consulta — Dr. Talles Leandro, Urologista em Campina Grande",
+      },
+    ],
+  },
 };
 
 const DOCTORALIA_URL =
@@ -29,9 +57,52 @@ const ADDRESS = "R. Dep. Álvaro Gaudêncio, 281 - Centro - CEP: 58400-243";
 const CITY = "Campina Grande, PB";
 const HOURS = "De segunda a sexta-feira, das 07h30 às 17h30";
 const CRM_LABEL = "CRM-PB 5970";
+const jsonLdBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://drtallesleandro.com.br" },
+    { "@type": "ListItem", position: 2, name: "Contato e Agendamento", item: "https://drtallesleandro.com.br/contato" },
+  ],
+};
+
+const jsonLdClinic = {
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  name: "Clínica Vitta — Dr. Talles Leandro",
+  description: "Consultório de urologia do Dr. Talles Leandro em Campina Grande/PB.",
+  url: "https://drtallesleandro.com.br/contato",
+  telephone: ["+55-83-3142-1505", "+55-83-3142-1507", "+55-83-98828-7705"],
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "R. Dep. Álvaro Gaudêncio, 281",
+    addressLocality: "Campina Grande",
+    addressRegion: "PB",
+    postalCode: "58400-243",
+    addressCountry: "BR",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: -7.2308,
+    longitude: -35.8817,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "07:30",
+      closes: "17:30",
+    },
+  ],
+  hasMap: "https://www.google.com/maps/search/?api=1&query=R.+Dep.+%C3%81lvaro+Gaud%C3%AAncio,+281,+Centro,+Campina+Grande,+PB,+58400-243",
+  medicalSpecialty: "Urology",
+};
+
 export default function ContatoPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdClinic) }} />
       <Header />
       <main id="contato-page">
         <style>{`

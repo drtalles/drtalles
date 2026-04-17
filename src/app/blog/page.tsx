@@ -5,9 +5,36 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import { BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Blog | Dr. Talles Leandro",
+  title: "Blog de Urologia | Dr. Talles Leandro — Artigos sobre Saúde do Homem",
   description:
-    "Conteúdos sobre Urologia, saúde do homem, prevenção e cirurgia robótica com linguagem clara e foco em orientação médica.",
+    "Artigos sobre urologia, saúde do homem, prevenção, diagnóstico e cirurgia robótica escritos pelo Dr. Talles Leandro, urologista em Campina Grande/PB. Linguagem clara e orientação clínica.",
+  keywords: [
+    "blog urologia",
+    "artigos urologia",
+    "saúde do homem",
+    "prevenção urológica",
+    "cirurgia robótica artigos",
+    "Dr. Talles Leandro blog",
+    "urologia Campina Grande",
+  ],
+  alternates: {
+    canonical: "https://drtallesleandro.com.br/blog",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://drtallesleandro.com.br/blog",
+    title: "Blog de Urologia | Dr. Talles Leandro",
+    description:
+      "Artigos sobre urologia, saúde do homem e cirurgia robótica com linguagem clara pelo Dr. Talles Leandro.",
+    images: [
+      {
+        url: "/img/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Blog de Urologia — Dr. Talles Leandro",
+      },
+    ],
+  },
 };
 
 export default function BlogPage() {

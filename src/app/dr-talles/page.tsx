@@ -17,9 +17,36 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Dr. Talles Leandro | Urologista em Campina Grande",
+  title: "Dr. Talles Leandro | Urologista em Campina Grande, PB — Trajetória e Formação",
   description:
-    "Conheça a trajetória do Dr. Talles Leandro, urologista em Campina Grande, com atuação em saúde do homem, atendimento personalizado e cirurgia robótica urológica.",
+    "Conheça a trajetória do Dr. Talles Leandro, urologista em Campina Grande/PB. Formação na UFCG, residência no Hospital São Rafael e estágio na Alemanha. Especialista em saúde do homem e cirurgia robótica urológica.",
+  keywords: [
+    "Dr. Talles Leandro urologista",
+    "urologista Campina Grande PB",
+    "formação urologia",
+    "CRM-PB 5970",
+    "professor urologia UFCG",
+    "cirurgia robótica urologista",
+    "saúde do homem Campina Grande",
+  ],
+  alternates: {
+    canonical: "https://drtallesleandro.com.br/dr-talles",
+  },
+  openGraph: {
+    type: "profile",
+    url: "https://drtallesleandro.com.br/dr-talles",
+    title: "Dr. Talles Leandro | Urologista em Campina Grande, PB",
+    description:
+      "Conheça a trajetória do Dr. Talles Leandro — urologista com formação na UFCG, residência no Hospital São Rafael e estágio na Alemanha. Especialista em saúde do homem e cirurgia robótica.",
+    images: [
+      {
+        url: "/img/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Dr. Talles Leandro — Urologista em Campina Grande, PB",
+      },
+    ],
+  },
 };
 
 const DOCTORALIA_URL =
@@ -60,9 +87,51 @@ const DIFERENCIAIS = [
   { icon: Monitor, text: "Ampliação da atuação em cirurgia robótica urológica" },
 ];
 
+const jsonLdBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://drtallesleandro.com.br" },
+    { "@type": "ListItem", position: 2, name: "Dr. Talles Leandro", item: "https://drtallesleandro.com.br/dr-talles" },
+  ],
+};
+
+const jsonLdProfilePage = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  dateCreated: "2024-01-01",
+  dateModified: new Date().toISOString().split("T")[0],
+  mainEntity: {
+    "@type": "Physician",
+    "@id": "https://drtallesleandro.com.br/#physician",
+    name: "Dr. Talles Leandro",
+    description:
+      "Urologista em Campina Grande/PB com formação na Universidade Federal de Roraima, residência no Hospital São Rafael e estágio na Ludwig Maximilian Universität (Munique, Alemanha). Atuação em saúde do homem, urologia geral e cirurgia robótica urológica.",
+    hasCredential: [
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "degree",
+        educationalLevel: "Graduação",
+        name: "Graduação em Medicina",
+        recognizedBy: { "@type": "CollegeOrUniversity", name: "Universidade Federal de Roraima" },
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "postdoctoral",
+        name: "Residência Médica em Urologia",
+        recognizedBy: { "@type": "MedicalOrganization", name: "Hospital São Rafael — Salvador" },
+      },
+    ],
+    jobTitle: "Urologista",
+    worksFor: { "@type": "MedicalClinic", name: "Clínica Vitta", address: { "@type": "PostalAddress", addressLocality: "Campina Grande", addressRegion: "PB" } },
+  },
+};
+
 export default function DrTallesPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdProfilePage) }} />
       <Header />
       <main id="dr-talles-page">
         <style>{`

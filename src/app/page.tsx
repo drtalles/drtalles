@@ -12,9 +12,37 @@ import Agendamento from "@/components/sections/Agendamento";
 import Localizacao from "@/components/sections/Localizacao";
 
 export const metadata: Metadata = {
-  title: "Dr. Talles Leandro — Urologista em Campina Grande",
+  title: "Dr. Talles Leandro — Urologista em Campina Grande, PB",
   description:
-    "Dr. Talles Leandro é urologista em Campina Grande/PB, especialista em saúde do homem, urologia geral e cirurgia robótica urológica. Agende sua consulta online.",
+    "Dr. Talles Leandro é urologista em Campina Grande/PB especializado em saúde do homem, urologia geral, andrologia e cirurgia robótica urológica. Atendimento humanizado e individualizado. Agende sua consulta.",
+  keywords: [
+    "urologista Campina Grande",
+    "urologista em Campina Grande PB",
+    "Dr. Talles Leandro",
+    "urologia Campina Grande",
+    "saúde do homem",
+    "cirurgia robótica urológica",
+    "consulta urologia",
+    "Clínica Vitta",
+  ],
+  alternates: {
+    canonical: "https://drtallesleandro.com.br",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://drtallesleandro.com.br",
+    title: "Dr. Talles Leandro — Urologista em Campina Grande, PB",
+    description:
+      "Urologista em Campina Grande/PB especializado em saúde do homem, urologia geral e cirurgia robótica urológica. Atendimento humanizado e individualizado.",
+    images: [
+      {
+        url: "/img/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Dr. Talles Leandro — Urologista em Campina Grande, PB",
+      },
+    ],
+  },
 };
 
 export default function HomePage() {

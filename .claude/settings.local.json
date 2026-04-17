@@ -6,7 +6,9 @@
       "Bash(npm install:*)",
       "Bash(node -e \"const pkg = require\\(''./node_modules/gsap/package.json''\\); console.log\\(pkg.version\\)\")",
       "Bash(npx tsc:*)",
-      "Bash(npx next:*)"
+      "Bash(npx next:*)",
+      "Bash(xargs grep *)",
+      "Bash(npm run *)"
     ]
   }
 }

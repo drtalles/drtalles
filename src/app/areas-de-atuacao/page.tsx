@@ -19,9 +19,38 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Áreas de Atuação em Urologia | Dr. Talles Leandro",
+  title: "Áreas de Atuação em Urologia | Dr. Talles Leandro — Campina Grande, PB",
   description:
-    "Conheça as áreas de atuação do Dr. Talles Leandro em urologia, com foco em saúde do homem, disfunções sexuais, andrologia, endourologia e cirurgias urológicas.",
+    "Saúde do homem, urologia geral, andrologia, disfunções sexuais, endourologia e uroginecologia em Campina Grande/PB. Conheça as especialidades do Dr. Talles Leandro, urologista CRM-PB 5970.",
+  keywords: [
+    "áreas de atuação urologia",
+    "saúde do homem Campina Grande",
+    "andrologia Campina Grande",
+    "disfunção erétil Campina Grande",
+    "endourologia",
+    "uroginecologia Campina Grande",
+    "urologia geral PB",
+    "cirurgia urológica minimamente invasiva",
+    "videolaparoscopia urológica",
+  ],
+  alternates: {
+    canonical: "https://drtallesleandro.com.br/areas-de-atuacao",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://drtallesleandro.com.br/areas-de-atuacao",
+    title: "Áreas de Atuação em Urologia | Dr. Talles Leandro — Campina Grande, PB",
+    description:
+      "Saúde do homem, andrologia, disfunções sexuais, endourologia, uroginecologia e cirurgia robótica em Campina Grande/PB.",
+    images: [
+      {
+        url: "/img/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Áreas de Atuação — Dr. Talles Leandro, Urologista",
+      },
+    ],
+  },
 };
 
 const DOCTORALIA_URL =
@@ -93,9 +122,35 @@ const MENU_ITEMS = [
   { id: "agendar-consulta", label: "Agendamento" },
 ];
 
+const jsonLdBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://drtallesleandro.com.br" },
+    { "@type": "ListItem", position: 2, name: "Áreas de Atuação", item: "https://drtallesleandro.com.br/areas-de-atuacao" },
+  ],
+};
+
+const jsonLdSpecialties = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Áreas de Atuação — Dr. Talles Leandro, Urologista",
+  itemListElement: AREA_BLOCKS.map((area, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "MedicalSpecialty",
+      name: area.title,
+      description: area.text,
+    },
+  })),
+};
+
 export default function AreasAtuacaoPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSpecialties) }} />
       <Header />
       <main id="areas-page">
         <style>{`

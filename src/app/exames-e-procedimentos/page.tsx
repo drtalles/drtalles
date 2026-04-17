@@ -17,9 +17,37 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Exames e Procedimentos Urológicos | Dr. Talles Leandro",
+  title: "Exames e Procedimentos Urológicos em Campina Grande | Dr. Talles Leandro",
   description:
-    "Conheça os principais exames e procedimentos urológicos realizados pelo Dr. Talles Leandro, com foco em diagnóstico, acompanhamento e condução adequada de cada caso.",
+    "Cistoscopia, urodinâmica, urofluxometria, crioterapia e biópsia de pênis em Campina Grande/PB. Exames e procedimentos urológicos com indicação individualizada pelo Dr. Talles Leandro, CRM-PB 5970.",
+  keywords: [
+    "exames urológicos Campina Grande",
+    "cistoscopia Campina Grande",
+    "urodinâmica Campina Grande",
+    "urofluxometria",
+    "crioterapia HPV",
+    "biópsia pênis",
+    "procedimentos urológicos PB",
+    "diagnóstico urológico Campina Grande",
+  ],
+  alternates: {
+    canonical: "https://drtallesleandro.com.br/exames-e-procedimentos",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://drtallesleandro.com.br/exames-e-procedimentos",
+    title: "Exames e Procedimentos Urológicos em Campina Grande | Dr. Talles Leandro",
+    description:
+      "Cistoscopia, urodinâmica, urofluxometria e procedimentos urológicos em Campina Grande/PB com indicação médica individualizada.",
+    images: [
+      {
+        url: "/img/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Exames e Procedimentos Urológicos — Dr. Talles Leandro",
+      },
+    ],
+  },
 };
 
 const DOCTORALIA_URL =
@@ -62,9 +90,49 @@ const PROCEDIMENTOS = [
   },
 ];
 
+const jsonLdBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://drtallesleandro.com.br" },
+    { "@type": "ListItem", position: 2, name: "Exames e Procedimentos", item: "https://drtallesleandro.com.br/exames-e-procedimentos" },
+  ],
+};
+
+const jsonLdMedicalTests = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Exames e Procedimentos Urológicos",
+  description: "Lista de exames e procedimentos urológicos realizados pelo Dr. Talles Leandro em Campina Grande/PB.",
+  itemListElement: [
+    ...EXAMES.map((e, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "DiagnosticTest",
+        name: e.title,
+        description: e.text,
+        usedToDiagnose: { "@type": "MedicalCondition", name: "Disfunções do Trato Urinário" },
+      },
+    })),
+    ...PROCEDIMENTOS.map((p, i) => ({
+      "@type": "ListItem",
+      position: EXAMES.length + i + 1,
+      item: {
+        "@type": "MedicalProcedure",
+        name: p.title,
+        description: p.text,
+        procedureType: "https://schema.org/TherapeuticProcedure",
+      },
+    })),
+  ],
+};
+
 export default function ExamesProcedimentosPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdMedicalTests) }} />
       <Header />
       <main>
         <style>{`

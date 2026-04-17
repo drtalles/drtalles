@@ -17,9 +17,38 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Cirurgia Robótica Urológica | Dr. Talles Leandro",
+  title: "Cirurgia Robótica Urológica em Campina Grande | Dr. Talles Leandro",
   description:
-    "Entenda o que é cirurgia robótica urológica, seus principais benefícios e como essa nova frente integra a atuação do Dr. Talles Leandro.",
+    "Cirurgia robótica urológica com precisão e menor invasividade. Dr. Talles Leandro possui certificação em cirurgia robótica e realiza procedimentos urológicos oncológicos em Campina Grande/PB. Saiba mais.",
+  keywords: [
+    "cirurgia robótica urológica",
+    "cirurgia robótica Campina Grande",
+    "cirurgia minimamente invasiva urologia",
+    "cirurgia próstata robótica",
+    "cirurgia rim robótica",
+    "urooncologia Campina Grande",
+    "prostatectomia robótica",
+    "nefrectomia robótica",
+    "Dr. Talles Leandro cirurgia robótica",
+  ],
+  alternates: {
+    canonical: "https://drtallesleandro.com.br/cirurgia-robotica",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://drtallesleandro.com.br/cirurgia-robotica",
+    title: "Cirurgia Robótica Urológica em Campina Grande | Dr. Talles Leandro",
+    description:
+      "Dr. Talles Leandro possui certificação em cirurgia robótica urológica. Procedimentos minimamente invasivos com alta precisão cirúrgica em Campina Grande/PB.",
+    images: [
+      {
+        url: "/img/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Cirurgia Robótica Urológica — Dr. Talles Leandro",
+      },
+    ],
+  },
 };
 
 const DOCTORALIA_URL =
@@ -90,9 +119,57 @@ const KEYWORDS = [
   { icon: UserRound, label: "Abordagem individualizada" },
 ];
 
+const jsonLdFAQ = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
+const jsonLdBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://drtallesleandro.com.br" },
+    { "@type": "ListItem", position: 2, name: "Cirurgia Robótica", item: "https://drtallesleandro.com.br/cirurgia-robotica" },
+  ],
+};
+
+const jsonLdMedicalService = {
+  "@context": "https://schema.org",
+  "@type": "MedicalProcedure",
+  name: "Cirurgia Robótica Urológica",
+  procedureType: "https://schema.org/SurgicalProcedure",
+  description:
+    "Procedimento cirúrgico minimamente invasivo controlado por plataforma robótica, indicado em casos urológicos oncológicos como próstata e rins.",
+  bodyLocation: "Sistema Urinário",
+  preparation: "Avaliação médica individualizada prévia à indicação cirúrgica.",
+  howPerformed:
+    "O médico controla instrumentos acoplados a uma plataforma robótica com alta precisão e visão ampliada da área operada.",
+  followup: "Acompanhamento pós-operatório individualizado conforme evolução clínica.",
+  recognizingAuthority: {
+    "@type": "MedicalOrganization",
+    name: "Conselho Federal de Medicina",
+  },
+  performer: {
+    "@type": "Physician",
+    name: "Dr. Talles Leandro",
+    identifier: "CRM-PB 5970",
+  },
+};
+
 export default function CirurgiaRoboticaPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFAQ) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdMedicalService) }} />
       <Header />
       <main id="cirurgia-robotica-page">
         <style>{`
