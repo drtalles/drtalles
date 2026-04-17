@@ -26,7 +26,6 @@ const DOCTORALIA_URL =
   "https://www.doctoralia.com.br/talles-leandro-oliveira/urologista/campina-grande?utm_id=34199&utm_source=widget-doctor-34199&utm_medium=big&utm_campaign=&utm_content=#highlight-calendar";
 const WA_URL = "https://wa.me/5583999999999";
 const CRM_LABEL = "CRM-PB 5970";
-const RQE_LABEL = "RQE em atualização";
 
 const BENEFICIOS = [
   {
@@ -70,7 +69,7 @@ const FAQ = [
   {
     question: "Quais casos podem ter indicação?",
     answer:
-      "A indicação depende de avaliação médica individualizada. Entre os casos que mais se destacam estão situações urológicas oncológicas, especialmente relacionadas à próstata e aos rins.",
+      "A indicação depende de avaliação médica individualizada. Entre os casos que mais se destacam estão situações oncológicas na urologia, especialmente relacionadas à próstata e aos rins.",
   },
   {
     question: "Quais são os possíveis benefícios dessa abordagem?",
@@ -524,7 +523,7 @@ export default function CirurgiaRoboticaPage() {
                 plataforma cirúrgica.
               </p>
               <p className="cr-text" style={{ marginTop: "0.9rem" }}>
-                Na Urologia, essa abordagem pode ser especialmente importante em
+                Na urologia, essa abordagem pode ser especialmente importante em
                 procedimentos que exigem refinamento técnico, visão ampliada da
                 área operada e maior precisão nos movimentos durante a cirurgia.
               </p>
@@ -537,7 +536,7 @@ export default function CirurgiaRoboticaPage() {
 
             <div className="cr-feature-media">
               <Image
-                src="/img/dr-talles-3.png"
+                src="/img/dr-talles-cirurgia.png"
                 alt="Contexto de cirurgia robótica urológica"
                 width={620}
                 height={760}
@@ -550,20 +549,20 @@ export default function CirurgiaRoboticaPage() {
         <section className="section-pad cr-connection">
           <div className="container-site cr-connection-grid">
             <div>
-              <p className="eyebrow">Conexão com a Urologia</p>
+              <p className="eyebrow">Conexão com a urologia</p>
               <h2 style={{ marginBottom: "1rem", color: "var(--color-primary-dark)" }}>
-                Como essa frente se conecta à Urologia
+                Como essa frente se conecta à urologia
               </h2>
               <p className="cr-text">
-                Dentro da Urologia, a cirurgia robótica vem ganhando espaço em
+                Na urologia, a cirurgia robótica vem ganhando espaço em
                 casos que exigem abordagem cirúrgica criteriosa e planejamento
                 individualizado.
               </p>
               <p className="cr-text" style={{ marginTop: "0.9rem" }}>
                 No posicionamento atual do Dr. Talles Leandro, essa nova etapa
-                passa a ser comunicada com atenção especial aos casos urológicos
-                oncológicos, especialmente em situações relacionadas à próstata
-                e aos rins.
+                passa a ser comunicada com atenção especial aos casos
+                oncológicos urológicos, sobretudo em situações relacionadas à
+                próstata e aos rins.
               </p>
             </div>
 
@@ -660,7 +659,7 @@ export default function CirurgiaRoboticaPage() {
                 Uma nova etapa da atuação do Dr. Talles
               </h2>
               <p className="cr-text">
-                Com 15 anos de experiência em Urologia e certificação em
+                Com 15 anos de experiência em urologia e certificação em
                 cirurgia robótica urológica, Dr. Talles amplia sua prática
                 cirúrgica e fortalece seu posicionamento profissional com uma
                 abordagem alinhada às novas possibilidades da medicina.
@@ -713,7 +712,7 @@ export default function CirurgiaRoboticaPage() {
         <section id="agendamento" className="section-pad cr-final-cta">
           <div className="container-site cr-final-inner">
             <p className="eyebrow" style={{ justifyContent: "center", color: "var(--color-accent)" }}>
-              Conversão
+              Agendamento
             </p>
             <h2 style={{ color: "#fff", marginBottom: "1rem" }}>
               Agende sua consulta e tire suas dúvidas
@@ -756,7 +755,7 @@ export default function CirurgiaRoboticaPage() {
             </div>
 
             <p className="cr-note">
-              {CRM_LABEL} · {RQE_LABEL}
+              {CRM_LABEL}
             </p>
           </div>
         </section>

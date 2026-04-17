@@ -14,23 +14,21 @@ import {
 export const metadata: Metadata = {
   title: "Agende sua Consulta | Dr. Talles Leandro",
   description:
-    "Entre em contato com o Dr. Talles Leandro e agende sua consulta de forma pratica por WhatsApp, telefone ou agendamento online.",
+    "Entre em contato com o Dr. Talles Leandro e agende sua consulta de forma prática por WhatsApp, telefone ou agendamento online.",
 };
 
 const DOCTORALIA_URL =
   "https://www.doctoralia.com.br/talles-leandro-oliveira/urologista/campina-grande?utm_id=34199&utm_source=widget-doctor-34199&utm_medium=big&utm_campaign=&utm_content=#highlight-calendar";
 const WA_URL = "https://wa.me/5583999999999";
 const MAP_URL =
-  "https://www.google.com/maps/search/?api=1&query=R.+Dep.+Alvaro+Gaudencio,+281,+Centro,+Campina+Grande,+PB,+58400-243";
+  "https://www.google.com/maps/search/?api=1&query=R.+Dep.+%C3%81lvaro+Gaud%C3%AAncio,+281,+Centro,+Campina+Grande,+PB,+58400-243";
 
 const PHONES = ["(83) 3142-1505", "(83) 3142-1507", "(83) 9 8828-7705"];
-const CLINIC_NAME = "Clinica Vitta";
-const ADDRESS = "R. Dep. Alvaro Gaudencio, 281 - Centro - CEP: 58400-243";
+const CLINIC_NAME = "Clínica Vitta";
+const ADDRESS = "R. Dep. Álvaro Gaudêncio, 281 - Centro - CEP: 58400-243";
 const CITY = "Campina Grande, PB";
-const HOURS = "De segunda a sexta-feira, das 07:30 as 17:30";
+const HOURS = "De segunda a sexta-feira, das 07h30 às 17h30";
 const CRM_LABEL = "CRM-PB 5970";
-const RQE_LABEL = "RQE em atualizacao";
-
 export default function ContatoPage() {
   return (
     <>
@@ -329,7 +327,6 @@ export default function ContatoPage() {
 
               <div className="ct-hero-meta">
                 <span>{CRM_LABEL}</span>
-                <span>{RQE_LABEL}</span>
               </div>
 
               <div className="ct-hero-actions">
@@ -361,7 +358,7 @@ export default function ContatoPage() {
               <h2>Agendamento online</h2>
               <p>
                 O agendamento online oferece mais praticidade no primeiro contato
-                e ajuda a organizar o atendimento de forma mais rapida e objetiva.
+                e ajuda a organizar o atendimento de forma mais rápida e objetiva.
               </p>
               <div className="ct-main-actions">
                 <a
@@ -386,8 +383,8 @@ export default function ContatoPage() {
               </span>
               <h2>WhatsApp</h2>
               <p>
-                Para duvidas iniciais e orientacoes rapidas sobre o atendimento,
-                o WhatsApp pode funcionar como um canal de apoio ao agendamento.
+                Para dúvidas iniciais e orientações rápidas sobre o atendimento,
+                o WhatsApp pode funcionar como canal de apoio ao agendamento.
               </p>
               <div className="ct-main-actions">
                 <a
@@ -404,7 +401,7 @@ export default function ContatoPage() {
           </div>
         </section>
 
-        {/* Blocos informativos: telefone, endereco, horario */}
+        {/* Blocos informativos: telefone, endereço e horário */}
         <section className="section-pad ct-info">
           <div className="container-site ct-info-grid">
             <article className="ct-info-card">
@@ -425,7 +422,7 @@ export default function ContatoPage() {
                 ))}
               </ul>
               <p style={{ marginTop: "0.7rem", fontSize: "0.84rem", color: "var(--color-neutral-400)" }}>
-                Entre em contato para informacoes sobre atendimento e organizacao da agenda.
+                Entre em contato para informações sobre atendimento e organização da agenda.
               </p>
             </article>
 
@@ -434,7 +431,7 @@ export default function ContatoPage() {
                 <span aria-hidden>
                   <MapPin size={16} />
                 </span>
-                <h3>Endereco e localizacao</h3>
+                <h3>Endereço e localização</h3>
               </div>
               <p>
                 <strong>{CLINIC_NAME}</strong>
@@ -460,10 +457,10 @@ export default function ContatoPage() {
                 <span aria-hidden>
                   <Clock3 size={16} />
                 </span>
-                <h3>Horarios de atendimento</h3>
+                <h3>Horários de atendimento</h3>
               </div>
               <p>
-                Consulte os horarios disponiveis e escolha o melhor momento para
+                Consulte os horários disponíveis e escolha o melhor momento para
                 organizar seu atendimento.
               </p>
               <p style={{ marginTop: "0.75rem", color: "var(--color-primary-dark)", fontWeight: 700 }}>
@@ -477,7 +474,7 @@ export default function ContatoPage() {
         <section id="agendar-consulta" className="section-pad ct-final">
           <div className="container-site ct-final-inner">
             <p className="eyebrow" style={{ justifyContent: "center", color: "var(--color-accent)" }}>
-              Conversao
+              Conversão
             </p>
             <h2 style={{ color: "#fff", marginBottom: "1rem" }}>
               Atendimento com mais praticidade
@@ -491,9 +488,9 @@ export default function ContatoPage() {
                 marginInline: "auto",
               }}
             >
-              A proposta do novo site e facilitar o caminho entre a busca do
+              A proposta do novo site é facilitar o caminho entre a busca do
               paciente e o agendamento da consulta, com canais claros,
-              orientacao objetiva e acesso rapido as principais informacoes.
+              orientação objetiva e acesso rápido às principais informações.
             </p>
 
             <div className="ct-final-actions">
@@ -521,7 +518,7 @@ export default function ContatoPage() {
             </div>
 
             <p className="ct-note">
-              {CRM_LABEL} · {RQE_LABEL}
+              {CRM_LABEL}
             </p>
           </div>
         </section>

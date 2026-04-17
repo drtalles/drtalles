@@ -67,10 +67,26 @@ export default function DrTallesPage() {
       <main id="dr-talles-page">
         <style>{`
           /* Internal hero */
+          #dr-talles-page .internal-hero {
+            --dr-hero-bottom-pad: clamp(3.8rem, 7.2vw, 6.2rem);
+            padding-bottom: var(--dr-hero-bottom-pad);
+            padding-top: var(--dr-hero-bottom-pad);
+
+          }
+
+          .dr-hero-layout {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: clamp(1.5rem, 3vw, 3rem);
+            max-width: none;
+          }
+
           .dr-hero-intro {
             position: relative;
-            z-index: 1;
-            max-width: 820px;
+            z-index: 2;
+            flex: 1 1 0;
+            max-width: min(58%, 42rem);
           }
 
           .dr-hero-intro .internal-hero-title {
@@ -80,36 +96,53 @@ export default function DrTallesPage() {
           }
 
           .dr-hero-intro .internal-hero-description {
-            max-width: 62ch;
+            max-width: 52ch;
           }
 
-          .dr-hero-wave {
-            position: absolute;
-            right: -88px;
-            bottom: -124px;
-            width: min(54vw, 700px);
-            height: min(30vw, 350px);
-            border-radius: 999px;
+          .dr-hero-photo {
+            position: relative;
+            flex: 0 0 clamp(280px, 32vw, 420px);
             pointer-events: none;
-            border: 1px solid rgba(255,255,255,0.16);
-            transform: rotate(-10deg);
-            opacity: 0.42;
+            z-index: 1;
+            align-self: flex-end;
+            margin-bottom: calc(var(--dr-hero-bottom-pad, 0px) * -1);
           }
 
-          .dr-hero-wave::before {
-            content: "";
-            position: absolute;
-            inset: 14px;
-            border-radius: inherit;
-            border: 1px solid rgba(125,223,215,0.4);
+          .dr-hero-photo img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: min(34vw, 500px);
+            object-fit: contain;
+            object-position: bottom center;
           }
 
-          .dr-hero-wave::after {
-            content: "";
-            position: absolute;
-            inset: 28px;
-            border-radius: inherit;
-            border: 1px solid rgba(255,255,255,0.16);
+          @media (max-width: 1080px) {
+            .dr-hero-layout {
+              gap: clamp(1rem, 2.4vw, 2rem);
+            }
+
+            .dr-hero-intro {
+              max-width: min(56%, 36rem);
+            }
+
+            .dr-hero-photo {
+              flex-basis: clamp(240px, 34vw, 360px);
+            }
+          }
+
+          @media (max-width: 860px) {
+            .dr-hero-layout {
+              max-width: 100%;
+            }
+
+            .dr-hero-intro {
+              max-width: 100%;
+            }
+
+            .dr-hero-photo {
+              display: none;
+            }
           }
 
           .dr-traj-grid {
@@ -372,10 +405,6 @@ export default function DrTallesPage() {
           }
 
           @media (max-width: 860px) {
-            .dr-hero-wave {
-              display: none;
-            }
-
             .dr-phi-grid {
               grid-template-columns: 1fr;
             }
@@ -402,19 +431,25 @@ export default function DrTallesPage() {
         <section className="internal-hero" data-header-theme="dark">
           <div className="internal-hero-glow" aria-hidden />
           <div className="internal-hero-lines" aria-hidden />
-          <div className="dr-hero-wave" aria-hidden />
 
           <div className="container-site">
-            <div className="dr-hero-intro internal-hero-inner">
-              <p className="internal-hero-kicker">Urologia de alta performance clinica</p>
+            <div className="internal-hero-inner dr-hero-layout">
+              <div className="dr-hero-intro">
+                <p className="internal-hero-kicker">Urologia de alta performance clínica</p>
 
-              <h1 className="internal-hero-title">Dr. Talles Leandro</h1>
+                <h1 className="internal-hero-title">Dr. Talles Leandro</h1>
 
-              <p className="internal-hero-description">
-                Urologista com atuacao voltada a saude do homem, atendimento
-                personalizado e evolucao continua da pratica cirurgica, com
-                conduta medica individualizada para cada paciente.
-              </p>
+                <p className="internal-hero-description">
+                  Urologista com atuação voltada à saúde do homem, atendimento
+                  personalizado e evolução contínua da prática cirúrgica, com
+                  conduta médica individualizada para cada paciente.
+                </p>
+              </div>
+
+              <div className="dr-hero-photo" aria-hidden>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/img/dr-talles-1.png" alt="" />
+              </div>
             </div>
           </div>
         </section>
@@ -699,4 +734,3 @@ export default function DrTallesPage() {
     </>
   );
 }
-

@@ -21,15 +21,13 @@ import {
 export const metadata: Metadata = {
   title: "Áreas de Atuação em Urologia | Dr. Talles Leandro",
   description:
-    "Conheça as áreas de atuação do Dr. Talles Leandro em Urologia, com foco em saúde do homem, disfunções sexuais, andrologia, endourologia e cirurgias urológicas.",
+    "Conheça as áreas de atuação do Dr. Talles Leandro em urologia, com foco em saúde do homem, disfunções sexuais, andrologia, endourologia e cirurgias urológicas.",
 };
 
 const DOCTORALIA_URL =
   "https://www.doctoralia.com.br/talles-leandro-oliveira/urologista/campina-grande?utm_id=34199&utm_source=widget-doctor-34199&utm_medium=big&utm_campaign=&utm_content=#highlight-calendar";
 const WA_URL = "https://wa.me/5583999999999";
 const CRM_LABEL = "CRM-PB 5970";
-const RQE_LABEL = "RQE em atualização";
-
 type AreaBlock = {
   id: string;
   nav: string;
@@ -41,8 +39,8 @@ type AreaBlock = {
 const AREA_BLOCKS: AreaBlock[] = [
   {
     id: "saude-do-homem",
-    nav: "Saúde do Homem",
-    title: "Saúde do Homem",
+    nav: "Saúde do homem",
+    title: "Saúde do homem",
     text:
       "A saúde do homem exige atenção em diferentes fases da vida, tanto na prevenção quanto na investigação de sintomas e no acompanhamento de condições que impactam a qualidade de vida. Dentro dessa frente, o atendimento busca oferecer avaliação cuidadosa, orientação clara e definição da melhor conduta para cada caso.",
     icon: User,
@@ -52,7 +50,7 @@ const AREA_BLOCKS: AreaBlock[] = [
     nav: "Urologia Geral",
     title: "Urologia Geral",
     text:
-      "A Urologia Geral envolve a avaliação, o diagnóstico e o acompanhamento de alterações do sistema urinário em homens e mulheres, além de condições relacionadas ao aparelho reprodutor masculino. O objetivo é conduzir cada caso com clareza, atenção individual e segurança na tomada de decisão.",
+      "A urologia geral envolve a avaliação, o diagnóstico e o acompanhamento de alterações do sistema urinário em homens e mulheres, além de condições relacionadas ao aparelho reprodutor masculino. O objetivo é conduzir cada caso com clareza, atenção individual e segurança na tomada de decisão.",
     icon: Activity,
   },
   {
@@ -60,7 +58,7 @@ const AREA_BLOCKS: AreaBlock[] = [
     nav: "Andrologia",
     title: "Andrologia",
     text:
-      "A Andrologia é a área voltada à saúde sexual e reprodutiva do homem. O atendimento considera as particularidades de cada paciente, com escuta cuidadosa e investigação adequada para orientar o tratamento de forma personalizada.",
+      "A andrologia é a área voltada à saúde sexual e reprodutiva do homem. O atendimento considera as particularidades de cada paciente, com escuta cuidadosa e investigação adequada para orientar o tratamento de forma personalizada.",
     icon: Dna,
   },
   {
@@ -76,15 +74,15 @@ const AREA_BLOCKS: AreaBlock[] = [
     nav: "Endourologia",
     title: "Endourologia",
     text:
-      "A Endourologia reúne abordagens minimamente invasivas voltadas ao diagnóstico e ao tratamento de diferentes condições do trato urinário. Essa frente contribui para uma condução mais precisa em casos que exigem avaliação técnica e definição criteriosa de procedimento.",
+      "A endourologia reúne abordagens minimamente invasivas voltadas ao diagnóstico e ao tratamento de diferentes condições do trato urinário. Essa frente contribui para uma condução mais precisa em casos que exigem avaliação técnica e definição criteriosa de procedimentos.",
     icon: Microscope,
   },
   {
     id: "uro-ginecologia",
-    nav: "Uro-ginecologia",
-    title: "Uro-ginecologia",
+    nav: "Uroginecologia",
+    title: "Uroginecologia",
     text:
-      "A Uro-ginecologia contempla condições urológicas que também dialogam com a saúde feminina, especialmente em quadros funcionais e de suporte. O acompanhamento busca avaliar sintomas, organizar o diagnóstico e indicar a melhor condução para cada situação.",
+      "A uroginecologia contempla condições urológicas que também dialogam com a saúde feminina, especialmente em quadros funcionais e de suporte. O acompanhamento busca avaliar sintomas, organizar o diagnóstico e indicar a melhor condução para cada situação.",
     icon: Users,
   },
 ];
@@ -350,12 +348,12 @@ export default function AreasAtuacaoPage() {
 
           <div className="container-site">
             <div className="areas-hero-intro internal-hero-inner">
-              <p className="internal-hero-kicker">Especialidades em Urologia</p>
+              <p className="internal-hero-kicker">Especialidades em urologia</p>
 
               <h1 className="internal-hero-title">Áreas de Atuação</h1>
 
               <p className="internal-hero-description">
-                Conheça as principais frentes de atuação em Urologia, com avaliação
+                Conheça as principais frentes de atuação em urologia, com avaliação
                 clínica criteriosa, planejamento diagnóstico e conduta individualizada
                 para cada caso.
               </p>
@@ -391,7 +389,7 @@ export default function AreasAtuacaoPage() {
                 Frentes de atuação
               </p>
               <h2 style={{ marginBottom: "0.85rem" }}>
-                Cuidado urológico com leitura clara e modular
+                Cuidado urológico com leitura clara e objetiva
               </h2>
               <p style={{ margin: 0, color: "var(--color-neutral-700)", lineHeight: 1.72 }}>
                 Navegue rapidamente pelas principais áreas e entenda como cada
@@ -494,7 +492,7 @@ export default function AreasAtuacaoPage() {
             >
               Cada paciente chega com uma necessidade diferente. Por isso, a
               proposta do atendimento é organizar o diagnóstico, esclarecer
-              possibilidades e indicar a melhor conduta com base em avaliação
+              as possibilidades e indicar a melhor conduta com base em avaliação
               médica cuidadosa, respeitando as particularidades de cada caso.
             </p>
 
@@ -523,7 +521,7 @@ export default function AreasAtuacaoPage() {
             </div>
 
             <p className="areas-cta-note">
-              {CRM_LABEL} | {RQE_LABEL}
+              {CRM_LABEL}
             </p>
           </div>
         </section>

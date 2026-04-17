@@ -564,7 +564,7 @@ export default function Hero() {
 
             {/* Especialidade */}
             <p ref={aEspRef} className="hero-esp-initial">
-              Especialidade Urologia e Cirurgia Robótica
+              Especialidade: Urologia e Cirurgia Robótica
             </p>
 
             {/* Chips */}
@@ -618,7 +618,7 @@ export default function Hero() {
                 <ExternalLink size={13} />
               </a>
               <a
-                href="#sobre"
+                href="/dr-talles"
                 style={{
                   display: "inline-flex", alignItems: "center", gap: "0.5rem",
                   padding: "0.9375rem 1.625rem", borderRadius: "0.5rem",
@@ -638,7 +638,7 @@ export default function Hero() {
                   t.style.background = "transparent";
                 }}
               >
-                Conheça Dr. Talles
+                Conheça o Dr. Talles
               </a>
             </div>
           </div>
@@ -738,7 +738,7 @@ export default function Hero() {
                   <ExternalLink size={13} />
                 </a>
                 <a
-                  href="#sobre"
+                  href="/dr-talles"
                   style={{
                     display: "inline-flex", alignItems: "center", gap: "0.5rem",
                     padding: "0.9375rem 1.625rem", borderRadius: "0.5rem",
@@ -758,7 +758,7 @@ export default function Hero() {
                     t.style.background = "transparent";
                   }}
                 >
-                  Conheça Dr. Talles
+                  Conheça o Dr. Talles
                 </a>
               </div>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MapPin, Phone, Mail, Instagram, Facebook, ExternalLink } from "lucide-react";
+import { MapPin, Phone, Instagram, Facebook, ExternalLink } from "lucide-react";
 
 const DOCTORALIA_URL =
   "https://www.doctoralia.com.br/talles-leandro-oliveira/urologista/campina-grande?utm_id=34199&utm_source=widget-doctor-34199&utm_medium=big&utm_campaign=&utm_content=#highlight-calendar";
@@ -183,10 +183,6 @@ export default function Footer() {
                 (83) 3142-1507<br />
                 (83) 9 8828-7705
               </span>
-            </li>
-            <li style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-              <Mail size={15} style={{ color: "var(--color-accent)", flexShrink: 0 }} />
-              <span style={{ fontSize: "0.875rem" }}>contato@drtallesleandro.com.br</span>
             </li>
           </ul>
         </div>

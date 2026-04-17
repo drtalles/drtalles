@@ -26,8 +26,6 @@ const DOCTORALIA_URL =
   "https://www.doctoralia.com.br/talles-leandro-oliveira/urologista/campina-grande?utm_id=34199&utm_source=widget-doctor-34199&utm_medium=big&utm_campaign=&utm_content=#highlight-calendar";
 const WA_URL = "https://wa.me/5583999999999";
 const CRM_LABEL = "CRM-PB 5970";
-const RQE_LABEL = "RQE em atualização";
-
 const EXAMES = [
   {
     title: "Cistoscopia",
@@ -52,12 +50,12 @@ const EXAMES = [
 const PROCEDIMENTOS = [
   {
     title: "Crioterapia",
-    text: "A crioterapia é um procedimento utilizado em casos selecionados, inclusive em abordagens relacionadas a lesões por HPV, com condução objetiva, criteriosa e definida de acordo com avaliação médica.",
+    text: "A crioterapia é um procedimento utilizado em casos selecionados, inclusive em abordagens relacionadas a lesões por HPV. A condução é definida de forma objetiva e criteriosa, de acordo com a avaliação médica.",
     icon: Snowflake,
     num: "01",
   },
   {
-    title: "Biópsia de Pênis",
+    title: "Biópsia de pênis",
     text: "A biópsia de pênis é um procedimento indicado para investigação diagnóstica em lesões suspeitas, sempre conforme avaliação clínica e definição da melhor abordagem para cada caso.",
     icon: Dna,
     num: "02",
@@ -510,7 +508,7 @@ export default function ExamesProcedimentosPage() {
 
               <p className="internal-hero-description">
                 Conheça os principais exames e procedimentos utilizados para avaliação,
-                diagnóstico e acompanhamento em Urologia, com conduta médica
+                diagnóstico e acompanhamento em urologia, com conduta médica
                 individualizada para cada caso.
               </p>
             </div>
@@ -542,13 +540,13 @@ export default function ExamesProcedimentosPage() {
               </span>
 
               <h2 className="ep-consulta-title">
-                Consulta em Urologia
+                Consulta em urologia
               </h2>
 
               <p className="ep-consulta-text">
-                A consulta em Urologia é o primeiro passo para avaliar sintomas, investigar
+                A consulta em urologia é o primeiro passo para avaliar sintomas, investigar
                 alterações, esclarecer dúvidas e definir a melhor conduta para cada caso.
-                O atendimento é realizado com foco em escuta, clareza nas orientações e
+                O atendimento é realizado com foco na escuta, na clareza das orientações e
                 acompanhamento individualizado.
               </p>
 
@@ -563,7 +561,7 @@ export default function ExamesProcedimentosPage() {
                 </li>
                 <li>
                   <CheckCircle2 size={18} />
-                  Definição de conduta conforme necessidade individual.
+                  Definição da conduta conforme a necessidade individual.
                 </li>
               </ul>
             </div>
@@ -662,7 +660,7 @@ export default function ExamesProcedimentosPage() {
               Exames e procedimentos com<br />indicação individualizada
             </h2>
             <p className="ep-cta-text">
-              A indicação de exames e procedimentos sempre depende de consulta e
+              A indicação de exames e procedimentos sempre depende de consulta e de
               avaliação médica individualizada. Cada caso exige análise cuidadosa para
               definir a melhor forma de investigação, acompanhamento e tratamento.
             </p>
@@ -692,7 +690,7 @@ export default function ExamesProcedimentosPage() {
             </div>
 
             <p className="ep-cta-note">
-              {CRM_LABEL} · {RQE_LABEL}
+              {CRM_LABEL}
             </p>
           </div>
         </section>

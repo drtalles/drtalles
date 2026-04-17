@@ -90,7 +90,7 @@ export default function Agendamento() {
         </div>
 
         <p className="eyebrow fade-up" style={{ justifyContent: "center", color: "var(--color-accent)" }}>
-          Marcação de consulta
+          Agendamento de consulta
         </p>
 
         <h2
@@ -110,7 +110,7 @@ export default function Agendamento() {
             margin: "0 auto 3rem",
           }}
         >
-          O agendamento pode ser feito de forma online, com mais praticidade para o
+          O agendamento pode ser feito online, com mais praticidade para o
           paciente e mais agilidade no contato inicial.
         </p>
 
