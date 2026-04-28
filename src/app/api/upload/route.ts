@@ -1,8 +1,6 @@
 import { auth } from "@/lib/auth"
+import { put } from "@vercel/blob"
 import { NextRequest, NextResponse } from "next/server"
-import { writeFile, mkdir } from "fs/promises"
-import { existsSync } from "fs"
-import path from "path"
 import crypto from "crypto"
 
 const ALLOWED_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp", "image/gif"]
@@ -38,19 +36,14 @@ export async function POST(req: NextRequest) {
 
     const ext = file.name.split(".").pop()?.toLowerCase() || "jpg"
     const hash = crypto.randomBytes(8).toString("hex")
-    const safeName = `${Date.now()}-${hash}.${ext}`
+    const safeName = `${folder}/${Date.now()}-${hash}.${ext}`
 
-    const uploadDir = path.join(process.cwd(), "public", "uploads", folder)
-    if (!existsSync(uploadDir)) {
-      await mkdir(uploadDir, { recursive: true })
-    }
+    const blob = await put(safeName, file, {
+      access: "public",
+      contentType: file.type,
+    })
 
-    const buffer = Buffer.from(await file.arrayBuffer())
-    await writeFile(path.join(uploadDir, safeName), buffer)
-
-    const url = `/uploads/${folder}/${safeName}`
-
-    return NextResponse.json({ url }, { status: 201 })
+    return NextResponse.json({ url: blob.url }, { status: 201 })
   } catch (err) {
     console.error("[upload] erro:", err)
     return NextResponse.json(
