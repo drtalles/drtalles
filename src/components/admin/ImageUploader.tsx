@@ -35,9 +35,10 @@ export default function ImageUploader({
       fd.append("folder", folder)
 
       const res = await fetch("/api/upload", { method: "POST", body: fd })
-      const json = await res.json()
+      const json = await res.json().catch(() => ({}))
 
-      if (!res.ok) throw new Error(json.error || "Erro ao enviar")
+      if (!res.ok) throw new Error(json.error || `Erro ao enviar (${res.status})`)
+      if (!json.url) throw new Error("Resposta inválida do servidor")
       onChange(json.url)
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Erro ao enviar")

@@ -124,8 +124,9 @@ function RichEditor({ content, onChange }: { content: string; onChange: (html: s
       fd.append("file", file)
       fd.append("folder", "blog")
       const res = await fetch("/api/upload", { method: "POST", body: fd })
-      const json = await res.json()
-      if (!res.ok) throw new Error(json.error)
+      const json = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(json.error || `Erro ao enviar (${res.status})`)
+      if (!json.url) throw new Error("Resposta inválida do servidor")
       editor?.chain().focus().setImage({ src: json.url }).run()
     } catch (err: unknown) {
       alert(err instanceof Error ? err.message : "Erro ao enviar imagem")
