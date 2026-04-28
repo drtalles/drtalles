@@ -1,53 +1,118 @@
-export type BlogPostSection = {
-  heading: string;
-  paragraphs: string[];
-  bullets?: string[];
-};
+import { db } from "@/lib/db"
+import { blogPosts, blogCategories } from "@/db/schema"
+import { eq, desc, and, ne } from "drizzle-orm"
 
-export type BlogPost = {
-  slug: string;
-  title: string;
-  excerpt: string;
-  category: string;
-  publishedAt: string;
-  readingTime: number;
-  author: string;
-  coverImage?: string;
-  coverAlt?: string;
-  tags: string[];
-  featured?: boolean;
-  sections: BlogPostSection[];
-};
-
-const BLOG_POSTS: BlogPost[] = [];
-
-export function getAllPosts(): BlogPost[] {
-  return [...BLOG_POSTS].sort(
-    (a, b) =>
-      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  );
+export type BlogPostSummary = {
+  id: string
+  slug: string
+  title: string
+  subtitle: string | null
+  excerpt: string | null
+  coverImage: string | null
+  listingImage: string | null
+  tags: string | null
+  readingTime: number | null
+  publishedAt: Date | null
+  categoryId: string | null
+  categoryName: string | null
+  categoryColor: string | null
 }
 
-export function getAllCategories(): string[] {
-  return Array.from(new Set(getAllPosts().map((post) => post.category)));
+export type BlogPostFull = BlogPostSummary & {
+  content: string
+  source: string | null
+  metaTitle: string | null
+  metaDescription: string | null
 }
 
-export function getPostBySlug(slug: string): BlogPost | undefined {
-  return BLOG_POSTS.find((post) => post.slug === slug);
+export type BlogCategory = {
+  id: string
+  name: string
+  slug: string
+  color: string | null
 }
 
-export function getRelatedPosts(
-  slug: string,
-  category: string,
-  limit = 3
-): BlogPost[] {
-  return getAllPosts()
-    .filter((post) => post.slug !== slug)
-    .sort((a, b) => {
-      const aScore = a.category === category ? 1 : 0;
-      const bScore = b.category === category ? 1 : 0;
-      if (aScore !== bScore) return bScore - aScore;
-      return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+const publishedFilter = eq(blogPosts.status, "published")
+
+const summaryFields = {
+  id: blogPosts.id,
+  slug: blogPosts.slug,
+  title: blogPosts.title,
+  subtitle: blogPosts.subtitle,
+  excerpt: blogPosts.excerpt,
+  coverImage: blogPosts.coverImage,
+  listingImage: blogPosts.listingImage,
+  tags: blogPosts.tags,
+  readingTime: blogPosts.readingTime,
+  publishedAt: blogPosts.publishedAt,
+  categoryId: blogPosts.categoryId,
+  categoryName: blogCategories.name,
+  categoryColor: blogCategories.color,
+}
+
+export async function getAllPublishedPosts(): Promise<BlogPostSummary[]> {
+  return db
+    .select(summaryFields)
+    .from(blogPosts)
+    .leftJoin(blogCategories, eq(blogPosts.categoryId, blogCategories.id))
+    .where(publishedFilter)
+    .orderBy(desc(blogPosts.publishedAt))
+}
+
+export async function getPublishedPostBySlug(slug: string): Promise<BlogPostFull | null> {
+  const rows = await db
+    .select({
+      ...summaryFields,
+      content: blogPosts.content,
+      source: blogPosts.source,
+      metaTitle: blogPosts.metaTitle,
+      metaDescription: blogPosts.metaDescription,
     })
-    .slice(0, limit);
+    .from(blogPosts)
+    .leftJoin(blogCategories, eq(blogPosts.categoryId, blogCategories.id))
+    .where(and(publishedFilter, eq(blogPosts.slug, slug)))
+    .limit(1)
+
+  return rows[0] ?? null
+}
+
+export async function getRelatedPosts(
+  currentSlug: string,
+  categoryId: string | null,
+  limit = 3
+): Promise<BlogPostSummary[]> {
+  const conditions = [publishedFilter, ne(blogPosts.slug, currentSlug)]
+  if (categoryId) conditions.push(eq(blogPosts.categoryId, categoryId))
+
+  return db
+    .select(summaryFields)
+    .from(blogPosts)
+    .leftJoin(blogCategories, eq(blogPosts.categoryId, blogCategories.id))
+    .where(and(...conditions))
+    .orderBy(desc(blogPosts.publishedAt))
+    .limit(limit)
+}
+
+export async function getPublishedCategories(): Promise<BlogCategory[]> {
+  const rows = await db
+    .selectDistinct({
+      id: blogCategories.id,
+      name: blogCategories.name,
+      slug: blogCategories.slug,
+      color: blogCategories.color,
+    })
+    .from(blogPosts)
+    .innerJoin(blogCategories, eq(blogPosts.categoryId, blogCategories.id))
+    .where(publishedFilter)
+    .orderBy(blogCategories.name)
+
+  return rows
+}
+
+export async function getAllPublishedSlugs(): Promise<string[]> {
+  const rows = await db
+    .select({ slug: blogPosts.slug })
+    .from(blogPosts)
+    .where(publishedFilter)
+  return rows.map((r) => r.slug)
 }

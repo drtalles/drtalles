@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { BookOpen } from "lucide-react";
+import { getAllPublishedPosts, getPublishedCategories } from "@/lib/blog-posts";
+import BlogListingClient from "./BlogListingClient";
 
 export const metadata: Metadata = {
   title: "Blog de Urologia | Dr. Talles Leandro — Artigos sobre Saúde do Homem",
@@ -37,7 +38,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const [posts, categories] = await Promise.all([
+    getAllPublishedPosts(),
+    getPublishedCategories(),
+  ]);
+
   return (
     <>
       <Header />
@@ -55,7 +61,6 @@ export default function BlogPage() {
             transform: rotate(-10deg);
             opacity: 0.42;
           }
-
           .blog-hero-wave::before {
             content: "";
             position: absolute;
@@ -63,7 +68,6 @@ export default function BlogPage() {
             border-radius: inherit;
             border: 1px solid rgba(125,223,215,0.42);
           }
-
           .blog-hero-wave::after {
             content: "";
             position: absolute;
@@ -71,47 +75,8 @@ export default function BlogPage() {
             border-radius: inherit;
             border: 1px solid rgba(255,255,255,0.16);
           }
-
-          .blog-coming-soon {
-            background: var(--color-neutral-50);
-          }
-
-          .blog-coming-soon-inner {
-            max-width: 620px;
-            margin-inline: auto;
-            text-align: center;
-            padding-block: clamp(3rem, 8vw, 5.5rem);
-          }
-
-          .blog-coming-icon {
-            width: 4rem;
-            height: 4rem;
-            border-radius: 1.1rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #1B4D6E 0%, #2EC4B6 100%);
-            color: #fff;
-            margin-bottom: 1.5rem;
-          }
-
-          .blog-coming-soon-inner h2 {
-            color: var(--color-primary-dark);
-            margin-bottom: 0.85rem;
-          }
-
-          .blog-coming-soon-inner p {
-            color: var(--color-neutral-700);
-            line-height: 1.78;
-            margin: 0;
-            max-width: 48ch;
-            margin-inline: auto;
-          }
-
           @media (max-width: 860px) {
-            .blog-hero-wave {
-              display: none;
-            }
+            .blog-hero-wave { display: none; }
           }
         `}</style>
 
@@ -119,7 +84,6 @@ export default function BlogPage() {
           <div className="internal-hero-glow" aria-hidden />
           <div className="internal-hero-lines" aria-hidden />
           <div className="blog-hero-wave" aria-hidden />
-
           <div className="container-site">
             <div className="internal-hero-inner">
               <p className="internal-hero-kicker">Conteúdo médico</p>
@@ -133,22 +97,7 @@ export default function BlogPage() {
           </div>
         </section>
 
-        <section className="blog-coming-soon">
-          <div className="container-site">
-            <div className="blog-coming-soon-inner">
-              <span className="blog-coming-icon" aria-hidden>
-                <BookOpen size={22} />
-              </span>
-              <p className="eyebrow" style={{ justifyContent: "center" }}>Novidades em breve</p>
-              <h2>Artigos chegando em breve</h2>
-              <p>
-                Em breve publicaremos artigos sobre urologia, saúde do homem,
-                prevenção e cirurgia robótica. Acompanhe para receber conteúdos
-                com orientação clínica clara e linguagem acessível.
-              </p>
-            </div>
-          </div>
-        </section>
+        <BlogListingClient posts={posts} categories={categories} />
       </main>
       <Footer />
       <WhatsAppButton />
