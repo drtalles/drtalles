@@ -3,6 +3,7 @@ import { db } from "@/lib/db"
 import { blogPosts, blogCategories } from "@/db/schema"
 import { eq } from "drizzle-orm"
 import { NextRequest, NextResponse } from "next/server"
+import { revalidateTag } from "next/cache"
 
 function slugify(text: string) {
   return text
@@ -123,6 +124,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
 
   if (!updated) return NextResponse.json({ error: "Post não encontrado" }, { status: 404 })
 
+  revalidateTag("blog-posts")
   return NextResponse.json(updated)
 }
 
@@ -134,5 +136,6 @@ export async function DELETE(_req: NextRequest, { params }: { params: Promise<{ 
 
   await db.delete(blogPosts).where(eq(blogPosts.id, id))
 
+  revalidateTag("blog-posts")
   return NextResponse.json({ success: true })
 }

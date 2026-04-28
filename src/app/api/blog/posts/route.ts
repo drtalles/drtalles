@@ -3,6 +3,7 @@ import { db } from "@/lib/db"
 import { blogPosts, blogCategories } from "@/db/schema"
 import { desc, eq, ilike, or, and } from "drizzle-orm"
 import { NextRequest, NextResponse } from "next/server"
+import { revalidateTag } from "next/cache"
 
 function slugify(text: string) {
   return text
@@ -128,5 +129,6 @@ export async function POST(req: NextRequest) {
     })
     .returning()
 
+  revalidateTag("blog-posts")
   return NextResponse.json(post, { status: 201 })
 }

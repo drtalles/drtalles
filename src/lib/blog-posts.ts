@@ -1,6 +1,7 @@
 import { db } from "@/lib/db"
 import { blogPosts, blogCategories } from "@/db/schema"
 import { eq, desc, and, ne } from "drizzle-orm"
+import { unstable_cache } from "next/cache"
 
 export type BlogPostSummary = {
   id: string
@@ -50,69 +51,85 @@ const summaryFields = {
   categoryColor: blogCategories.color,
 }
 
-export async function getAllPublishedPosts(): Promise<BlogPostSummary[]> {
-  return db
-    .select(summaryFields)
-    .from(blogPosts)
-    .leftJoin(blogCategories, eq(blogPosts.categoryId, blogCategories.id))
-    .where(publishedFilter)
-    .orderBy(desc(blogPosts.publishedAt))
-}
+export const getAllPublishedPosts = unstable_cache(
+  async (): Promise<BlogPostSummary[]> => {
+    return db
+      .select(summaryFields)
+      .from(blogPosts)
+      .leftJoin(blogCategories, eq(blogPosts.categoryId, blogCategories.id))
+      .where(publishedFilter)
+      .orderBy(desc(blogPosts.publishedAt))
+  },
+  ["all-published-posts"],
+  { tags: ["blog-posts"] }
+)
 
-export async function getPublishedPostBySlug(slug: string): Promise<BlogPostFull | null> {
-  const rows = await db
-    .select({
-      ...summaryFields,
-      content: blogPosts.content,
-      source: blogPosts.source,
-      metaTitle: blogPosts.metaTitle,
-      metaDescription: blogPosts.metaDescription,
-    })
-    .from(blogPosts)
-    .leftJoin(blogCategories, eq(blogPosts.categoryId, blogCategories.id))
-    .where(and(publishedFilter, eq(blogPosts.slug, slug)))
-    .limit(1)
+export const getPublishedPostBySlug = unstable_cache(
+  async (slug: string): Promise<BlogPostFull | null> => {
+    const rows = await db
+      .select({
+        ...summaryFields,
+        content: blogPosts.content,
+        source: blogPosts.source,
+        metaTitle: blogPosts.metaTitle,
+        metaDescription: blogPosts.metaDescription,
+      })
+      .from(blogPosts)
+      .leftJoin(blogCategories, eq(blogPosts.categoryId, blogCategories.id))
+      .where(and(publishedFilter, eq(blogPosts.slug, slug)))
+      .limit(1)
 
-  return rows[0] ?? null
-}
+    return rows[0] ?? null
+  },
+  ["post-by-slug"],
+  { tags: ["blog-posts"] }
+)
 
-export async function getRelatedPosts(
-  currentSlug: string,
-  categoryId: string | null,
-  limit = 3
-): Promise<BlogPostSummary[]> {
-  const conditions = [publishedFilter, ne(blogPosts.slug, currentSlug)]
-  if (categoryId) conditions.push(eq(blogPosts.categoryId, categoryId))
+export const getRelatedPosts = unstable_cache(
+  async (currentSlug: string, categoryId: string | null, limit = 3): Promise<BlogPostSummary[]> => {
+    const conditions = [publishedFilter, ne(blogPosts.slug, currentSlug)]
+    if (categoryId) conditions.push(eq(blogPosts.categoryId, categoryId))
 
-  return db
-    .select(summaryFields)
-    .from(blogPosts)
-    .leftJoin(blogCategories, eq(blogPosts.categoryId, blogCategories.id))
-    .where(and(...conditions))
-    .orderBy(desc(blogPosts.publishedAt))
-    .limit(limit)
-}
+    return db
+      .select(summaryFields)
+      .from(blogPosts)
+      .leftJoin(blogCategories, eq(blogPosts.categoryId, blogCategories.id))
+      .where(and(...conditions))
+      .orderBy(desc(blogPosts.publishedAt))
+      .limit(limit)
+  },
+  ["related-posts"],
+  { tags: ["blog-posts"] }
+)
 
-export async function getPublishedCategories(): Promise<BlogCategory[]> {
-  const rows = await db
-    .selectDistinct({
-      id: blogCategories.id,
-      name: blogCategories.name,
-      slug: blogCategories.slug,
-      color: blogCategories.color,
-    })
-    .from(blogPosts)
-    .innerJoin(blogCategories, eq(blogPosts.categoryId, blogCategories.id))
-    .where(publishedFilter)
-    .orderBy(blogCategories.name)
+export const getPublishedCategories = unstable_cache(
+  async (): Promise<BlogCategory[]> => {
+    const rows = await db
+      .selectDistinct({
+        id: blogCategories.id,
+        name: blogCategories.name,
+        slug: blogCategories.slug,
+        color: blogCategories.color,
+      })
+      .from(blogPosts)
+      .innerJoin(blogCategories, eq(blogPosts.categoryId, blogCategories.id))
+      .where(publishedFilter)
+      .orderBy(blogCategories.name)
 
-  return rows
-}
+    return rows
+  },
+  ["published-categories"],
+  { tags: ["blog-posts"] }
+)
 
-export async function getAllPublishedSlugs(): Promise<string[]> {
-  const rows = await db
-    .select({ slug: blogPosts.slug })
-    .from(blogPosts)
-    .where(publishedFilter)
-  return rows.map((r) => r.slug)
-}
+export const getAllPublishedSlugs = unstable_cache(
+  async (): Promise<string[]> => {
+    const rows = await db
+      .select({ slug: blogPosts.slug })
+      .from(blogPosts)
+      .where(publishedFilter)
+    return rows.map((r) => r.slug)
+  },
+  ["all-published-slugs"],
+  { tags: ["blog-posts"] }
+)
