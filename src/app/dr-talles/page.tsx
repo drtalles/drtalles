@@ -51,7 +51,7 @@ export const metadata: Metadata = {
 
 const DOCTORALIA_URL =
   "https://www.doctoralia.com.br/talles-leandro-oliveira/urologista/campina-grande?utm_id=34199&utm_source=widget-doctor-34199&utm_medium=big&utm_campaign=&utm_content=#highlight-calendar";
-const WA_URL = "https://wa.me/5583999999999";
+const WA_URL = "https://wa.me/558391350081";
 
 const TRAJETORIA = [
   {
