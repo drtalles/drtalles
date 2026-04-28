@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     "urologista Campina Grande PB",
     "formação urologia",
     "CRM-PB 5970",
-    "professor urologia UFCG",
+    "trajetória urologia UFCG",
     "cirurgia robótica urologista",
     "saúde do homem Campina Grande",
   ],
@@ -72,8 +72,8 @@ const TRAJETORIA = [
     title: "Experiência profissional",
     icon: Monitor,
     items: [
-      "Atuação como médico urologista no Hospital Universitário Alcides Carneiro - UFCG.",
-      "Professor da disciplina de Urologia da UFCG.",
+      "Experiência prévia como médico urologista no Hospital Universitário Alcides Carneiro - UFCG.",
+      "Atuação acadêmica anterior como professor da disciplina de Urologia da UFCG.",
     ],
   },
 ];
