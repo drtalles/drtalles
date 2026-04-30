@@ -31,11 +31,11 @@ export const metadata: Metadata = {
     "diagnóstico urológico Campina Grande",
   ],
   alternates: {
-    canonical: "https://drtallesleandro.com.br/exames-e-procedimentos",
+    canonical: "https://www.drtallesleandrourologista.com.br/exames-e-procedimentos",
   },
   openGraph: {
     type: "website",
-    url: "https://drtallesleandro.com.br/exames-e-procedimentos",
+    url: "https://www.drtallesleandrourologista.com.br/exames-e-procedimentos",
     title: "Exames e Procedimentos Urológicos em Campina Grande | Dr. Talles Leandro",
     description:
       "Cistoscopia, urodinâmica, urofluxometria e procedimentos urológicos em Campina Grande/PB com indicação médica individualizada.",
@@ -94,8 +94,8 @@ const jsonLdBreadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://drtallesleandro.com.br" },
-    { "@type": "ListItem", position: 2, name: "Exames e Procedimentos", item: "https://drtallesleandro.com.br/exames-e-procedimentos" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.drtallesleandrourologista.com.br" },
+    { "@type": "ListItem", position: 2, name: "Exames e Procedimentos", item: "https://www.drtallesleandrourologista.com.br/exames-e-procedimentos" },
   ],
 };
 

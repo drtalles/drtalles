@@ -26,11 +26,11 @@ export const metadata: Metadata = {
     "marcar consulta urologia PB",
   ],
   alternates: {
-    canonical: "https://drtallesleandro.com.br/contato",
+    canonical: "https://www.drtallesleandrourologista.com.br/contato",
   },
   openGraph: {
     type: "website",
-    url: "https://drtallesleandro.com.br/contato",
+    url: "https://www.drtallesleandrourologista.com.br/contato",
     title: "Agendar Consulta com Urologista em Campina Grande | Dr. Talles Leandro",
     description:
       "Agende sua consulta na Clínica Vitta, Campina Grande/PB. WhatsApp, telefone ou agendamento online pelo Doctoralia.",
@@ -61,8 +61,8 @@ const jsonLdBreadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://drtallesleandro.com.br" },
-    { "@type": "ListItem", position: 2, name: "Contato e Agendamento", item: "https://drtallesleandro.com.br/contato" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.drtallesleandrourologista.com.br" },
+    { "@type": "ListItem", position: 2, name: "Contato e Agendamento", item: "https://www.drtallesleandrourologista.com.br/contato" },
   ],
 };
 
@@ -71,7 +71,7 @@ const jsonLdClinic = {
   "@type": "MedicalClinic",
   name: "Clínica Vitta — Dr. Talles Leandro",
   description: "Consultório de urologia do Dr. Talles Leandro em Campina Grande/PB.",
-  url: "https://drtallesleandro.com.br/contato",
+  url: "https://www.drtallesleandrourologista.com.br/contato",
   telephone: ["+55-83-3142-1505", "+55-83-3142-1507", "+55-83-98828-7705"],
   address: {
     "@type": "PostalAddress",

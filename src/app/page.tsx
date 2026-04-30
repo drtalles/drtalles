@@ -26,11 +26,11 @@ export const metadata: Metadata = {
     "Clínica Vitta",
   ],
   alternates: {
-    canonical: "https://drtallesleandro.com.br",
+    canonical: "https://www.drtallesleandrourologista.com.br",
   },
   openGraph: {
     type: "website",
-    url: "https://drtallesleandro.com.br",
+    url: "https://www.drtallesleandrourologista.com.br",
     title: "Dr. Talles Leandro — Urologista em Campina Grande, PB",
     description:
       "Urologista em Campina Grande/PB especializado em saúde do homem, urologia geral e cirurgia robótica urológica. Atendimento humanizado e individualizado.",

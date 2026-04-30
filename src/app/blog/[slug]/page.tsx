@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       images: [{ url: image, width: 1200, height: 630, alt: post.title }],
-      publishedTime: post.publishedAt?.toISOString(),
+      publishedTime: post.publishedAt ? new Date(post.publishedAt).toISOString() : undefined,
     },
   };
 }
@@ -77,8 +77,47 @@ export default async function BlogPostDetailPage({ params }: Props) {
   const related = await getRelatedPosts(post.slug, post.categoryId, 3);
   const tags = parseTags(post.tags);
 
+  const BASE = "https://www.drtallesleandrourologista.com.br";
+
+  const jsonLdBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: BASE },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: `${BASE}/blog/${post.slug}` },
+    ],
+  };
+
+  const jsonLdArticle = {
+    "@context": "https://schema.org",
+    "@type": "MedicalScholarlyArticle",
+    headline: post.title,
+    description: post.excerpt ?? post.metaDescription ?? "",
+    image: post.coverImage ?? `${BASE}/img/og-image.jpg`,
+    datePublished: post.publishedAt ? new Date(post.publishedAt).toISOString() : undefined,
+    dateModified: post.publishedAt ? new Date(post.publishedAt).toISOString() : undefined,
+    author: {
+      "@type": "Physician",
+      name: "Dr. Talles Leandro",
+      url: `${BASE}/dr-talles`,
+      identifier: "CRM-PB 5970",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Dr. Talles Leandro — Urologista",
+      url: BASE,
+      logo: { "@type": "ImageObject", url: `${BASE}/img/logo.png` },
+    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE}/blog/${post.slug}` },
+    inLanguage: "pt-BR",
+    keywords: post.tags ?? undefined,
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdArticle) }} />
       <Header />
       <main id="blog-post-page">
         <style>{`

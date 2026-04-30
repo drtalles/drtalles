@@ -34,11 +34,11 @@ export const metadata: Metadata = {
     "videolaparoscopia urológica",
   ],
   alternates: {
-    canonical: "https://drtallesleandro.com.br/areas-de-atuacao",
+    canonical: "https://www.drtallesleandrourologista.com.br/areas-de-atuacao",
   },
   openGraph: {
     type: "website",
-    url: "https://drtallesleandro.com.br/areas-de-atuacao",
+    url: "https://www.drtallesleandrourologista.com.br/areas-de-atuacao",
     title: "Áreas de Atuação em Urologia | Dr. Talles Leandro — Campina Grande, PB",
     description:
       "Saúde do homem, andrologia, disfunções sexuais, endourologia, uroginecologia e cirurgia robótica em Campina Grande/PB.",
@@ -126,8 +126,8 @@ const jsonLdBreadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://drtallesleandro.com.br" },
-    { "@type": "ListItem", position: 2, name: "Áreas de Atuação", item: "https://drtallesleandro.com.br/areas-de-atuacao" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.drtallesleandrourologista.com.br" },
+    { "@type": "ListItem", position: 2, name: "Áreas de Atuação", item: "https://www.drtallesleandrourologista.com.br/areas-de-atuacao" },
   ],
 };
 

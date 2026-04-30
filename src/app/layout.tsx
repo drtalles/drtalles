@@ -19,7 +19,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://drtallesleandro.com.br"),
+  metadataBase: new URL("https://www.drtallesleandrourologista.com.br"),
   title: {
     default: "Dr. Talles Leandro — Urologista em Campina Grande, PB",
     template: "%s | Dr. Talles Leandro — Urologista",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     "Clínica Vitta Campina Grande",
     "CRM-PB 5970",
   ],
-  authors: [{ name: "Dr. Talles Leandro", url: "https://drtallesleandro.com.br/dr-talles" }],
+  authors: [{ name: "Dr. Talles Leandro", url: "https://www.drtallesleandrourologista.com.br/dr-talles" }],
   creator: "Dr. Talles Leandro",
   publisher: "Dr. Talles Leandro",
   category: "health",
@@ -63,15 +63,15 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://drtallesleandro.com.br",
+    canonical: "https://www.drtallesleandrourologista.com.br",
     languages: {
-      "pt-BR": "https://drtallesleandro.com.br",
+      "pt-BR": "https://www.drtallesleandrourologista.com.br",
     },
   },
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://drtallesleandro.com.br",
+    url: "https://www.drtallesleandrourologista.com.br",
     title: "Dr. Talles Leandro — Urologista em Campina Grande, PB",
     description:
       "Urologista em Campina Grande/PB especializado em saúde do homem, urologia geral e cirurgia robótica urológica. Atendimento individualizado e humanizado.",
@@ -120,7 +120,7 @@ export const metadata: Metadata = {
 const jsonLdPhysician = {
   "@context": "https://schema.org",
   "@type": "Physician",
-  "@id": "https://drtallesleandro.com.br/#physician",
+  "@id": "https://www.drtallesleandrourologista.com.br/#physician",
   name: "Dr. Talles Leandro",
   givenName: "Talles",
   familyName: "Leandro",
@@ -132,8 +132,8 @@ const jsonLdPhysician = {
   ],
   description:
     "Urologista em Campina Grande/PB com foco em saúde do homem, atendimento humanizado e cirurgia robótica urológica.",
-  url: "https://drtallesleandro.com.br",
-  image: "https://drtallesleandro.com.br/img/og-image.jpg",
+  url: "https://www.drtallesleandrourologista.com.br",
+  image: "https://www.drtallesleandrourologista.com.br/img/og-image.jpg",
   telephone: "+55-83-3142-1505",
   identifier: "CRM-PB 5970",
   alumniOf: [
@@ -152,7 +152,7 @@ const jsonLdPhysician = {
   ],
   worksFor: {
     "@type": "MedicalClinic",
-    "@id": "https://drtallesleandro.com.br/#clinic",
+    "@id": "https://www.drtallesleandrourologista.com.br/#clinic",
     name: "Clínica Vitta",
     address: {
       "@type": "PostalAddress",
@@ -164,7 +164,7 @@ const jsonLdPhysician = {
     },
     telephone: "+55-83-3142-1505",
     openingHours: "Mo-Fr 07:30-17:30",
-    url: "https://drtallesleandro.com.br/contato",
+    url: "https://www.drtallesleandrourologista.com.br/contato",
     geo: {
       "@type": "GeoCoordinates",
       latitude: -7.2308,
@@ -201,6 +201,8 @@ const jsonLdPhysician = {
     "Urooncologia",
   ],
   sameAs: [
+    "https://www.instagram.com/drtallesleandro/",
+    "https://www.facebook.com/drtallesleandro/",
     "https://www.doctoralia.com.br/talles-leandro-oliveira/urologista/campina-grande",
   ],
 };
@@ -208,14 +210,14 @@ const jsonLdPhysician = {
 const jsonLdLocalBusiness = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://drtallesleandro.com.br/#localbusiness",
+  "@id": "https://www.drtallesleandrourologista.com.br/#localbusiness",
   name: "Dr. Talles Leandro — Urologista",
   description:
     "Consultório de Urologia em Campina Grande/PB. Atendimento especializado em saúde do homem, urologia geral e cirurgia robótica urológica.",
-  url: "https://drtallesleandro.com.br",
+  url: "https://www.drtallesleandrourologista.com.br",
   telephone: "+55-83-3142-1505",
   email: "",
-  image: "https://drtallesleandro.com.br/img/og-image.jpg",
+  image: "https://www.drtallesleandrourologista.com.br/img/og-image.jpg",
   priceRange: "$$",
   currenciesAccepted: "BRL",
   paymentAccepted: "Cash, Credit Card, Debit Card, Health Insurance",
@@ -242,6 +244,8 @@ const jsonLdLocalBusiness = {
   ],
   hasMap: "https://www.google.com/maps/search/?api=1&query=R.+Dep.+%C3%81lvaro+Gaud%C3%AAncio,+281,+Centro,+Campina+Grande,+PB,+58400-243",
   sameAs: [
+    "https://www.instagram.com/drtallesleandro/",
+    "https://www.facebook.com/drtallesleandro/",
     "https://www.doctoralia.com.br/talles-leandro-oliveira/urologista/campina-grande",
   ],
 };
@@ -249,20 +253,20 @@ const jsonLdLocalBusiness = {
 const jsonLdWebSite = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://drtallesleandro.com.br/#website",
-  url: "https://drtallesleandro.com.br",
+  "@id": "https://www.drtallesleandrourologista.com.br/#website",
+  url: "https://www.drtallesleandrourologista.com.br",
   name: "Dr. Talles Leandro — Urologista em Campina Grande",
   description:
     "Site oficial do Dr. Talles Leandro, urologista em Campina Grande/PB.",
   inLanguage: "pt-BR",
   publisher: {
-    "@id": "https://drtallesleandro.com.br/#physician",
+    "@id": "https://www.drtallesleandrourologista.com.br/#physician",
   },
   potentialAction: {
     "@type": "SearchAction",
     target: {
       "@type": "EntryPoint",
-      urlTemplate: "https://drtallesleandro.com.br/blog?q={search_term_string}",
+      urlTemplate: "https://www.drtallesleandrourologista.com.br/blog?q={search_term_string}",
     },
     "query-input": "required name=search_term_string",
   },
@@ -274,6 +278,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning className={`${cormorant.variable} ${dmSans.variable}`}>
       <head>
+        {/* Preconnect para domínios críticos — reduz latência de fontes e imagens */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdPhysician) }}

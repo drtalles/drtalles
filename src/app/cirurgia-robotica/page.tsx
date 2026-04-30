@@ -32,11 +32,11 @@ export const metadata: Metadata = {
     "Dr. Talles Leandro cirurgia robótica",
   ],
   alternates: {
-    canonical: "https://drtallesleandro.com.br/cirurgia-robotica",
+    canonical: "https://www.drtallesleandrourologista.com.br/cirurgia-robotica",
   },
   openGraph: {
     type: "website",
-    url: "https://drtallesleandro.com.br/cirurgia-robotica",
+    url: "https://www.drtallesleandrourologista.com.br/cirurgia-robotica",
     title: "Cirurgia Robótica Urológica em Campina Grande | Dr. Talles Leandro",
     description:
       "Dr. Talles Leandro possui certificação em cirurgia robótica urológica. Procedimentos minimamente invasivos com alta precisão cirúrgica em Campina Grande/PB.",
@@ -136,8 +136,8 @@ const jsonLdBreadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://drtallesleandro.com.br" },
-    { "@type": "ListItem", position: 2, name: "Cirurgia Robótica", item: "https://drtallesleandro.com.br/cirurgia-robotica" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.drtallesleandrourologista.com.br" },
+    { "@type": "ListItem", position: 2, name: "Cirurgia Robótica", item: "https://www.drtallesleandrourologista.com.br/cirurgia-robotica" },
   ],
 };
 

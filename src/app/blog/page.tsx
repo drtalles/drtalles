@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     "urologia Campina Grande",
   ],
   alternates: {
-    canonical: "https://drtallesleandro.com.br/blog",
+    canonical: "https://www.drtallesleandrourologista.com.br/blog",
   },
   openGraph: {
     type: "website",
-    url: "https://drtallesleandro.com.br/blog",
+    url: "https://www.drtallesleandrourologista.com.br/blog",
     title: "Blog de Urologia | Dr. Talles Leandro",
     description:
       "Artigos sobre urologia, saúde do homem e cirurgia robótica com linguagem clara pelo Dr. Talles Leandro.",
@@ -44,8 +44,18 @@ export default async function BlogPage() {
     getPublishedCategories(),
   ]);
 
+  const jsonLdBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.drtallesleandrourologista.com.br" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.drtallesleandrourologista.com.br/blog" },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }} />
       <Header />
       <main id="blog-page">
         <style>{`
