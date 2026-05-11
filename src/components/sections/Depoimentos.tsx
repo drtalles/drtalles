@@ -252,7 +252,7 @@ export default function Depoimentos() {
               key={i}
               style={{
                 minWidth: `${cardWidthPct}%`,
-                padding: "1.25rem",
+                padding: "0.375rem",
                 boxSizing: "border-box",
               }}
             >
@@ -268,21 +268,6 @@ export default function Depoimentos() {
                   height: "100%",
                 }}
               >
-                {/* Quote mark */}
-                <div
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    fontSize: "4rem",
-                    lineHeight: 0.6,
-                    color: "var(--color-accent)",
-                    opacity: 0.35,
-                    userSelect: "none",
-                  }}
-                  aria-hidden
-                >
-                  &ldquo;
-                </div>
-
                 <p
                   style={{
                     fontFamily: "var(--font-display)",
