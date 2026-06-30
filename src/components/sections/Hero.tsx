@@ -770,7 +770,7 @@ export default function Hero() {
                 <div style={{ display: "flex", alignItems: "center", gap: "0.45rem" }}>
                   <Shield size={14} style={{ color: "var(--color-accent-dark)" }} />
                   <span style={{ fontSize: "0.8rem", color: "var(--color-neutral-700)", fontWeight: 500 }}>
-                    CRM-PB 5970
+                    CRM-PB 5970 · RQE Nº: 3821
                   </span>
                 </div>
                 <div style={{ width: "1px", height: "14px", background: "var(--color-neutral-200)" }} />

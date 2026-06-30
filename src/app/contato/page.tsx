@@ -56,7 +56,7 @@ const CLINIC_NAME = "Clínica Vitta";
 const ADDRESS = "R. Dep. Álvaro Gaudêncio, 281 - Centro - CEP: 58400-243";
 const CITY = "Campina Grande, PB";
 const HOURS = "De segunda a sexta-feira, das 07h30 às 17h30";
-const CRM_LABEL = "CRM-PB 5970";
+const CRM_LABEL = "CRM-PB 5970 · RQE Nº: 3821";
 const jsonLdBreadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",

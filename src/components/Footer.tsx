@@ -61,7 +61,7 @@ export default function Footer() {
                 margin: "0.375rem 0 0",
               }}
             >
-              Urologista · CRM-PB 5970
+              Urologista · CRM-PB 5970 · RQE Nº: 3821
             </p>
           </div>
           <p style={{ fontSize: "0.875rem", lineHeight: 1.7, margin: "0 0 1.5rem", color: "rgba(255,255,255,0.6)" }}>

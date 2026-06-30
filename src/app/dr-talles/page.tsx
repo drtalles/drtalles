@@ -794,7 +794,7 @@ export default function DrTallesPage() {
               </a>
             </div>
 
-            <p className="dr-cta-credentials">CRM-PB 5970</p>
+            <p className="dr-cta-credentials">CRM-PB 5970 · RQE Nº: 3821</p>
           </div>
         </section>
       </main>
