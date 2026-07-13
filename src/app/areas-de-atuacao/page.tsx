@@ -5,6 +5,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import {
   Activity,
   CalendarCheck,
@@ -552,7 +553,9 @@ export default function AreasAtuacaoPage() {
             </p>
 
             <div className="areas-cta-actions">
-              <a
+              <TrackedLink
+                event="agendar_doctoralia"
+                origem="areas_final"
                 href={DOCTORALIA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -562,8 +565,10 @@ export default function AreasAtuacaoPage() {
                 <CalendarCheck size={18} />
                 Agendar consulta
                 <ExternalLink size={14} />
-              </a>
-              <a
+              </TrackedLink>
+              <TrackedLink
+                event="clique_whatsapp"
+                origem="areas_final"
                 href={WA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -572,7 +577,7 @@ export default function AreasAtuacaoPage() {
               >
                 <MessageCircle size={18} />
                 Falar no WhatsApp
-              </a>
+              </TrackedLink>
             </div>
 
             <p className="areas-cta-note">

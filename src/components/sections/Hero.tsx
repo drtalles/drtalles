@@ -34,6 +34,7 @@ import {
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { trackEvent } from "@/lib/analytics";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -590,6 +591,7 @@ export default function Hero() {
               <a
                 href={DOCTORALIA_URL}
                 target="_blank" rel="noopener noreferrer"
+                onClick={() => trackEvent("agendar_doctoralia", { origem: "hero" })}
                 style={{
                   display: "inline-flex", alignItems: "center", gap: "0.5rem",
                   padding: "0.9375rem 1.875rem", borderRadius: "0.5rem",
@@ -710,6 +712,7 @@ export default function Hero() {
                 <a
                   href={DOCTORALIA_URL}
                   target="_blank" rel="noopener noreferrer"
+                  onClick={() => trackEvent("agendar_doctoralia", { origem: "hero" })}
                   style={{
                     display: "inline-flex", alignItems: "center", gap: "0.5rem",
                     padding: "0.9375rem 1.875rem", borderRadius: "0.5rem",

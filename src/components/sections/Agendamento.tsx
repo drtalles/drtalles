@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { ExternalLink, MessageCircle, CalendarCheck } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const DOCTORALIA_URL =
   "https://www.doctoralia.com.br/talles-leandro-oliveira/urologista/campina-grande?utm_id=34199&utm_source=widget-doctor-34199&utm_medium=big&utm_campaign=&utm_content=#highlight-calendar";
@@ -130,6 +131,7 @@ export default function Agendamento() {
             rel="noopener noreferrer"
             className="btn btn-accent"
             style={{ fontSize: "1.0625rem", padding: "1.0625rem 2.25rem" }}
+            onClick={() => trackEvent("agendar_doctoralia", { origem: "secao_agendamento" })}
           >
             <CalendarCheck size={20} />
             Agendar online
@@ -141,6 +143,7 @@ export default function Agendamento() {
             rel="noopener noreferrer"
             className="btn btn-outline-white"
             style={{ fontSize: "1.0625rem", padding: "1.0625rem 2.25rem" }}
+            onClick={() => trackEvent("clique_whatsapp", { origem: "secao_agendamento" })}
           >
             <MessageCircle size={20} />
             Falar pelo WhatsApp

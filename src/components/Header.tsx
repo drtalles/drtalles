@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { CalendarCheck, Menu, X } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const NAV_LINKS = [
   { label: "Início", href: "/" },
@@ -430,6 +431,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               className="hdr-cta"
+              onClick={() => trackEvent("agendar_doctoralia", { origem: "header" })}
             >
               <CalendarCheck size={15} />
               Agendar consulta
@@ -513,7 +515,10 @@ export default function Header() {
               href={DOCTORALIA_URL}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setMenuOpen(false)}
+              onClick={() => {
+                trackEvent("agendar_doctoralia", { origem: "header_mobile" });
+                setMenuOpen(false);
+              }}
               style={{
                 display: "flex",
                 alignItems: "center",

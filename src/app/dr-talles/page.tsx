@@ -4,6 +4,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import {
   ArrowRight,
   CalendarCheck,
@@ -771,7 +772,9 @@ export default function DrTallesPage() {
             </p>
 
             <div className="dr-cta-actions">
-              <a
+              <TrackedLink
+                event="agendar_doctoralia"
+                origem="dr_talles_final"
                 href={DOCTORALIA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -781,8 +784,10 @@ export default function DrTallesPage() {
                 <CalendarCheck size={18} />
                 Agendar consulta
                 <ExternalLink size={14} />
-              </a>
-              <a
+              </TrackedLink>
+              <TrackedLink
+                event="clique_whatsapp"
+                origem="dr_talles_final"
                 href={WA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -791,7 +796,7 @@ export default function DrTallesPage() {
               >
                 <MessageCircle size={18} />
                 Falar no WhatsApp
-              </a>
+              </TrackedLink>
             </div>
 
             <p className="dr-cta-credentials">CRM-PB 5970 · RQE Nº: 3821</p>

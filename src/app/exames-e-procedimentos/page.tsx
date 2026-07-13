@@ -3,6 +3,7 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import {
   Activity,
   CalendarCheck,
@@ -734,7 +735,9 @@ export default function ExamesProcedimentosPage() {
             </p>
 
             <div className="ep-cta-actions">
-              <a
+              <TrackedLink
+                event="agendar_doctoralia"
+                origem="exames_final"
                 href={DOCTORALIA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -744,8 +747,10 @@ export default function ExamesProcedimentosPage() {
                 <CalendarCheck size={18} />
                 Agendar consulta
                 <ExternalLink size={14} />
-              </a>
-              <a
+              </TrackedLink>
+              <TrackedLink
+                event="clique_whatsapp"
+                origem="exames_final"
                 href={WA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -754,7 +759,7 @@ export default function ExamesProcedimentosPage() {
               >
                 <MessageCircle size={18} />
                 Falar no WhatsApp
-              </a>
+              </TrackedLink>
             </div>
 
             <p className="ep-cta-note">

@@ -15,7 +15,12 @@
       "Bash(mkdir -p \"c:/projetos/drtalles/src/app/api/blog/posts/[id]\")",
       "Bash(mkdir -p \"c:/projetos/drtalles/src/app/api/blog/categories/[id]\")",
       "Bash(npm list *)",
-      "Bash(xargs wc *)"
+      "Bash(xargs wc *)",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/next/package.json'\\).version\\)\")",
+      "Bash(git check-ignore *)",
+      "PowerShell(npm install @next/third-parties@15.5.13 --save 2>&1)",
+      "PowerShell(npm run build 2>&1)",
+      "PowerShell(npm run lint 2>&1)"
     ]
   }
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { MessageCircle } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const WA_URL = "https://wa.me/558391350081";
 
@@ -11,6 +12,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Falar pelo WhatsApp"
+      onClick={() => trackEvent("clique_whatsapp", { origem: "botao_flutuante" })}
       style={{
         position: "fixed",
         bottom: "1.75rem",

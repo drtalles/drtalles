@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
-import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
+
+// ID de medição GA4. Usa a env var quando presente; fallback para o ID da
+// propriedade "drtalles" para não quebrar o tracking caso a env não esteja setada.
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-7VP9P73HNY";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -297,18 +301,9 @@ export default function RootLayout({
       </head>
       <body>
         {children}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-7VP9P73HNY"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-7VP9P73HNY');
-          `}
-        </Script>
+        {/* GA4 via @next/third-parties: cuida do page_view no load e nas
+            navegações client-side (App Router) e expõe window.gtag. */}
+        <GoogleAnalytics gaId={GA_ID} />
       </body>
     </html>
   );

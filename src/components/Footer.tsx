@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { MapPin, Phone, Instagram, Facebook, ExternalLink } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const DOCTORALIA_URL =
   "https://www.doctoralia.com.br/talles-leandro-oliveira/urologista/campina-grande?utm_id=34199&utm_source=widget-doctor-34199&utm_medium=big&utm_campaign=&utm_content=#highlight-calendar";
@@ -211,6 +212,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="btn btn-accent"
             style={{ fontSize: "0.875rem", padding: "0.625rem 1.25rem", gap: "0.375rem" }}
+            onClick={() => trackEvent("agendar_doctoralia", { origem: "footer" })}
           >
             Agendar online
             <ExternalLink size={14} />

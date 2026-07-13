@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import {
   CalendarCheck,
   Clock3,
@@ -401,7 +402,9 @@ export default function ContatoPage() {
               </div>
 
               <div className="ct-hero-actions">
-                <a
+                <TrackedLink
+                  event="agendar_doctoralia"
+                  origem="contato_hero"
                   href={DOCTORALIA_URL}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -409,7 +412,7 @@ export default function ContatoPage() {
                 >
                   <CalendarCheck size={17} />
                   Agendar online
-                </a>
+                </TrackedLink>
               </div>
             </div>
           </div>
@@ -432,7 +435,9 @@ export default function ContatoPage() {
                 e ajuda a organizar o atendimento de forma mais rápida e objetiva.
               </p>
               <div className="ct-main-actions">
-                <a
+                <TrackedLink
+                  event="agendar_doctoralia"
+                  origem="contato_card"
                   href={DOCTORALIA_URL}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -440,7 +445,7 @@ export default function ContatoPage() {
                 >
                   Agendar online
                   <ExternalLink size={14} />
-                </a>
+                </TrackedLink>
               </div>
             </article>
 
@@ -458,7 +463,9 @@ export default function ContatoPage() {
                 o WhatsApp pode funcionar como canal de apoio ao agendamento.
               </p>
               <div className="ct-main-actions">
-                <a
+                <TrackedLink
+                  event="clique_whatsapp"
+                  origem="contato_card"
                   href={WA_URL}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -466,7 +473,7 @@ export default function ContatoPage() {
                   style={{ background: "#25D366", border: "none", boxShadow: "0 4px 16px rgba(37,211,102,0.32)" }}
                 >
                   Falar no WhatsApp
-                </a>
+                </TrackedLink>
               </div>
             </article>
           </div>
@@ -488,7 +495,13 @@ export default function ContatoPage() {
               <ul className="ct-phone-list">
                 {PHONES.map((phone) => (
                   <li key={phone}>
-                    <a href={`tel:${phone.replace(/[^\d+]/g, "")}`}>{phone}</a>
+                    <TrackedLink
+                      event="clique_telefone"
+                      origem="contato_telefones"
+                      href={`tel:${phone.replace(/[^\d+]/g, "")}`}
+                    >
+                      {phone}
+                    </TrackedLink>
                   </li>
                 ))}
               </ul>
@@ -565,7 +578,9 @@ export default function ContatoPage() {
             </p>
 
             <div className="ct-final-actions">
-              <a
+              <TrackedLink
+                event="agendar_doctoralia"
+                origem="contato_final"
                 href={DOCTORALIA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -575,8 +590,10 @@ export default function ContatoPage() {
                 <CalendarCheck size={18} />
                 Agendar consulta
                 <ExternalLink size={14} />
-              </a>
-              <a
+              </TrackedLink>
+              <TrackedLink
+                event="clique_whatsapp"
+                origem="contato_final"
                 href={WA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -585,7 +602,7 @@ export default function ContatoPage() {
               >
                 <MessageCircle size={18} />
                 Falar no WhatsApp
-              </a>
+              </TrackedLink>
             </div>
 
             <p className="ct-note">

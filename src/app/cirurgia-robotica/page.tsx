@@ -4,6 +4,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import {
   CalendarCheck,
   Droplets,
@@ -809,7 +810,9 @@ export default function CirurgiaRoboticaPage() {
             </p>
 
             <div className="cr-final-actions">
-              <a
+              <TrackedLink
+                event="agendar_doctoralia"
+                origem="cirurgia_robotica_final"
                 href={DOCTORALIA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -818,8 +821,10 @@ export default function CirurgiaRoboticaPage() {
               >
                 <CalendarCheck size={18} />
                 Agendar consulta
-              </a>
-              <a
+              </TrackedLink>
+              <TrackedLink
+                event="clique_whatsapp"
+                origem="cirurgia_robotica_final"
                 href={WA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -828,7 +833,7 @@ export default function CirurgiaRoboticaPage() {
               >
                 <MessageCircle size={18} />
                 Falar no WhatsApp
-              </a>
+              </TrackedLink>
             </div>
 
             <p className="cr-note">
