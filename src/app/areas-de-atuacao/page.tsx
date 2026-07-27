@@ -127,6 +127,8 @@ type CondicaoCard = {
   title: string;
   text: string;
   icon: LucideIcon;
+  image: string;
+  imageAlt: string;
 };
 
 const CONDICOES_CARDS: CondicaoCard[] = [
@@ -136,6 +138,8 @@ const CONDICOES_CARDS: CondicaoCard[] = [
     text:
       "Jato urinário fraco, vontade de urinar toda hora ou sensação de bexiga cheia? Entenda a HPB e as possibilidades de tratamento.",
     icon: Droplets,
+    image: "/img/thumb_prostata.jpg",
+    imageAlt: "Ilustração da próstata aumentada (Hiperplasia Prostática Benigna)",
   },
   {
     href: "/vasectomia",
@@ -143,6 +147,8 @@ const CONDICOES_CARDS: CondicaoCard[] = [
     text:
       "Como funciona o procedimento, o que muda (e o que não muda) depois, e as etapas até a realização da vasectomia.",
     icon: ClipboardCheck,
+    image: "/img/thumb_vas.jpg",
+    imageAlt: "Ilustração do procedimento de vasectomia",
   },
   {
     href: "/pedra-no-rim",
@@ -150,6 +156,8 @@ const CONDICOES_CARDS: CondicaoCard[] = [
     text:
       "Quando o cálculo urinário pode precisar de tratamento e como funciona a avaliação de pedras nos rins e ureteres.",
     icon: Gem,
+    image: "/img/thumb_rin.jpg",
+    imageAlt: "Ilustração de pedra no rim e do trajeto do cálculo pelo ureter",
   },
   {
     href: "/cancer-de-prostata",
@@ -157,6 +165,8 @@ const CONDICOES_CARDS: CondicaoCard[] = [
     text:
       "Possibilidades de tratamento, quando a prostatectomia radical robótica pode ser indicada e segunda opinião.",
     icon: Ribbon,
+    image: "/img/thumb_can.jpg",
+    imageAlt: "Ilustração sobre câncer de próstata e cirurgia robótica",
   },
 ];
 
@@ -405,6 +415,26 @@ export default function AreasAtuacaoPage() {
             box-shadow: 0 12px 28px rgba(27,77,110,0.1);
           }
 
+          .condicao-card-media {
+            display: block;
+            position: relative;
+            margin: -1.2rem -1.2rem 1.1rem;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 1rem 1rem 0 0;
+            background: linear-gradient(155deg, rgba(27,77,110,0.06), rgba(46,196,182,0.09));
+          }
+
+          .condicao-card-media img {
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.32s ease;
+          }
+
+          .condicao-card:hover .condicao-card-media img {
+            transform: scale(1.04);
+          }
+
           .condicao-card p {
             margin: 0;
             color: var(--color-neutral-700);
@@ -647,6 +677,14 @@ export default function AreasAtuacaoPage() {
                 const Icon = card.icon;
                 return (
                   <Link key={card.href} href={card.href} className="condicao-card">
+                    <span className="condicao-card-media">
+                      <Image
+                        src={card.image}
+                        alt={card.imageAlt}
+                        fill
+                        sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 360px"
+                      />
+                    </span>
                     <div className="area-card-head">
                       <span className="area-icon" aria-hidden>
                         <Icon size={17} />

@@ -39,7 +39,8 @@
       "PowerShell(npx next build 2>&1)",
       "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\(\"c:\\\\projetos\\\\drtalles\\\\public\\\\img\\\\prostata.jpg\"\\); \"prostata.jpg: {0}x{1}\" -f $img.Width, $img.Height; $img.Dispose\\(\\))",
       "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\(\"c:\\\\projetos\\\\drtalles\\\\public\\\\img\\\\rin.jpg\"\\); \"rin.jpg: {0}x{1}\" -f $img.Width, $img.Height; $img.Dispose\\(\\))",
-      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\(\"c:\\\\projetos\\\\drtalles\\\\public\\\\img\\\\can.jpg\"\\); \"can.jpg: {0}x{1}\" -f $img.Width, $img.Height; $img.Dispose\\(\\))"
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\(\"c:\\\\projetos\\\\drtalles\\\\public\\\\img\\\\can.jpg\"\\); \"can.jpg: {0}x{1}\" -f $img.Width, $img.Height; $img.Dispose\\(\\))",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; foreach \\($f in @\\('thumb_can.jpg','thumb_prostata.jpg','thumb_rin.jpg','thumb_vas.jpg'\\)\\) { $p = \"c:\\\\projetos\\\\drtalles\\\\public\\\\img\\\\$f\"; $img = [System.Drawing.Image]::FromFile\\($p\\); \"{0}: {1}x{2}\" -f $f, $img.Width, $img.Height; $img.Dispose\\(\\) })"
     ]
   }
 }
