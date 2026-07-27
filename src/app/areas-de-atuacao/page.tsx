@@ -419,7 +419,7 @@ export default function AreasAtuacaoPage() {
             display: block;
             position: relative;
             margin: -1.2rem -1.2rem 1.1rem;
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 4 / 3;
             overflow: hidden;
             border-radius: 1rem 1rem 0 0;
             background: linear-gradient(155deg, rgba(27,77,110,0.06), rgba(46,196,182,0.09));
@@ -587,7 +587,8 @@ export default function AreasAtuacaoPage() {
                         src={card.image}
                         alt={card.imageAlt}
                         fill
-                        sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 360px"
+                        quality={90}
+                        sizes="(max-width: 700px) 100vw, (max-width: 1240px) 50vw, 560px"
                       />
                     </span>
                     <div className="area-card-head">
