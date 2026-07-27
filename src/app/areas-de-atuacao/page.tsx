@@ -551,6 +551,73 @@ export default function AreasAtuacaoPage() {
           </div>
         </section>
 
+        {/* Bloco: condições em destaque (landing pages) */}
+        <section
+          id="condicoes-em-destaque"
+          className="section-pad area-anchor-target"
+        >
+          <div className="container-site">
+            <div
+              style={{
+                textAlign: "center",
+                maxWidth: "760px",
+                marginInline: "auto",
+                marginBottom: "2rem",
+              }}
+            >
+              <p className="eyebrow" style={{ justifyContent: "center" }}>
+                Condições em destaque
+              </p>
+              <h2 style={{ marginBottom: "0.85rem" }}>
+                Entenda melhor algumas condições e procedimentos
+              </h2>
+              <p style={{ margin: 0, color: "var(--color-neutral-700)", lineHeight: 1.72 }}>
+                Páginas dedicadas para você entender sintomas, possibilidades de
+                tratamento e como funciona a avaliação em cada caso.
+              </p>
+            </div>
+
+            <div className="condicoes-grid">
+              {CONDICOES_CARDS.map((card) => {
+                const Icon = card.icon;
+                return (
+                  <Link key={card.href} href={card.href} className="condicao-card">
+                    <span className="condicao-card-media">
+                      <Image
+                        src={card.image}
+                        alt={card.imageAlt}
+                        fill
+                        sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 360px"
+                      />
+                    </span>
+                    <div className="area-card-head">
+                      <span className="area-icon" aria-hidden>
+                        <Icon size={17} />
+                      </span>
+                      <h3
+                        style={{
+                          margin: 0,
+                          fontFamily: "var(--font-body)",
+                          fontSize: "1rem",
+                          color: "var(--color-primary-dark)",
+                          lineHeight: 1.35,
+                        }}
+                      >
+                        {card.title}
+                      </h3>
+                    </div>
+                    <p>{card.text}</p>
+                    <span className="condicao-card-link">
+                      Saiba mais
+                      <ArrowRight size={15} aria-hidden />
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
         {/* Blocos 1 a 6 */}
         <section className="section-pad areas-grid-wrap">
           <div className="container-site">
@@ -642,73 +709,6 @@ export default function AreasAtuacaoPage() {
                 width={420}
                 height={520}
               />
-            </div>
-          </div>
-        </section>
-
-        {/* Bloco: condições em destaque (landing pages) */}
-        <section
-          id="condicoes-em-destaque"
-          className="section-pad area-anchor-target"
-        >
-          <div className="container-site">
-            <div
-              style={{
-                textAlign: "center",
-                maxWidth: "760px",
-                marginInline: "auto",
-                marginBottom: "2rem",
-              }}
-            >
-              <p className="eyebrow" style={{ justifyContent: "center" }}>
-                Condições em destaque
-              </p>
-              <h2 style={{ marginBottom: "0.85rem" }}>
-                Entenda melhor algumas condições e procedimentos
-              </h2>
-              <p style={{ margin: 0, color: "var(--color-neutral-700)", lineHeight: 1.72 }}>
-                Páginas dedicadas para você entender sintomas, possibilidades de
-                tratamento e como funciona a avaliação em cada caso.
-              </p>
-            </div>
-
-            <div className="condicoes-grid">
-              {CONDICOES_CARDS.map((card) => {
-                const Icon = card.icon;
-                return (
-                  <Link key={card.href} href={card.href} className="condicao-card">
-                    <span className="condicao-card-media">
-                      <Image
-                        src={card.image}
-                        alt={card.imageAlt}
-                        fill
-                        sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 360px"
-                      />
-                    </span>
-                    <div className="area-card-head">
-                      <span className="area-icon" aria-hidden>
-                        <Icon size={17} />
-                      </span>
-                      <h3
-                        style={{
-                          margin: 0,
-                          fontFamily: "var(--font-body)",
-                          fontSize: "1rem",
-                          color: "var(--color-primary-dark)",
-                          lineHeight: 1.35,
-                        }}
-                      >
-                        {card.title}
-                      </h3>
-                    </div>
-                    <p>{card.text}</p>
-                    <span className="condicao-card-link">
-                      Saiba mais
-                      <ArrowRight size={15} aria-hidden />
-                    </span>
-                  </Link>
-                );
-              })}
             </div>
           </div>
         </section>
