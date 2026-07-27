@@ -56,6 +56,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
       alternates: { languages: { "pt-BR": `${BASE_URL}/blog` } },
     },
+    // Landing pages de campanhas (docs/landing-pages-dr-talles-v2.md)
+    {
+      url: `${BASE_URL}/prostata-aumentada`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      alternates: { languages: { "pt-BR": `${BASE_URL}/prostata-aumentada` } },
+    },
+    {
+      url: `${BASE_URL}/vasectomia`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      alternates: { languages: { "pt-BR": `${BASE_URL}/vasectomia` } },
+    },
+    {
+      url: `${BASE_URL}/pedra-no-rim`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      alternates: { languages: { "pt-BR": `${BASE_URL}/pedra-no-rim` } },
+    },
+    {
+      url: `${BASE_URL}/cancer-de-prostata`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      alternates: { languages: { "pt-BR": `${BASE_URL}/cancer-de-prostata` } },
+    },
   ];
 
   let blogPosts: MetadataRoute.Sitemap = [];

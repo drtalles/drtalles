@@ -20,7 +20,26 @@
       "Bash(git check-ignore *)",
       "PowerShell(npm install @next/third-parties@15.5.13 --save 2>&1)",
       "PowerShell(npm run build 2>&1)",
-      "PowerShell(npm run lint 2>&1)"
+      "PowerShell(npm run lint 2>&1)",
+      "PowerShell(npm run build)",
+      "PowerShell(npm run start)",
+      "PowerShell(npx next start -p 3100)",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"http://localhost:3100/\" -UseBasicParsing -TimeoutSec 20; Write-Output \"home -> HTTP $\\($r.StatusCode\\)\" } catch { Write-Output \"home -> ERRO: $\\($_.Exception.Message\\)\" }; try { $r = Invoke-WebRequest -Uri \"http://localhost:3100/cirurgia-robotica\" -UseBasicParsing -TimeoutSec 20; Write-Output \"cirurgia-robotica -> HTTP $\\($r.StatusCode\\)\" } catch { Write-Output \"cirurgia-robotica -> ERRO: $\\($_.Exception.Message\\)\" })",
+      "PowerShell(Get-Content package.json | ConvertFrom-Json | ForEach-Object { $_.scripts })",
+      "PowerShell(Stop-Process -Id 7196 -Force -Confirm:$false)",
+      "PowerShell(npm run dev)",
+      "PowerShell(node -e \"console.log\\(require\\('./node_modules/lucide-react/package.json'\\).version\\); const l = require\\('lucide-react'\\); ['Ribbon','Gem','ClipboardCheck','Droplets','ArrowRight'].forEach\\(n => console.log\\(n, !!l[n]\\)\\)\")",
+      "PowerShell(npx tsc --noEmit)",
+      "PowerShell(foreach \\($p in @\\(\"/areas-de-atuacao\",\"/prostata-aumentada\",\"/vasectomia\",\"/pedra-no-rim\",\"/cancer-de-prostata\"\\)\\) { try { $r = Invoke-WebRequest -Uri \"http://localhost:3000$p\" -UseBasicParsing -TimeoutSec 90; $html = $r.Content; $hdr = if \\($html -match 'site-header'\\) {'sim'} else {'NAO'}; $nav = \\([regex]::Matches\\($html, 'Áreas de Atuação'\\)\\).Count; $cards = \\([regex]::Matches\\($html, 'condicao-card\"'\\)\\).Count; $lpheader = if \\($html -match 'lp-header'\\) {'AINDA TEM'} else {'ok'}; Write-Output \"$p -> HTTP $\\($r.StatusCode\\) | Header site: $hdr | menu-refs: $nav | cards: $cards | lp-header removido: $lpheader\" } catch { Write-Output \"$p -> ERRO: $\\($_.Exception.Message\\)\" } })",
+      "PowerShell(foreach \\($p in @\\(\"/prostata-aumentada\",\"/vasectomia\",\"/pedra-no-rim\",\"/cancer-de-prostata\"\\)\\) { try { $r = Invoke-WebRequest -Uri \"http://localhost:3000$p\" -UseBasicParsing -TimeoutSec 90; $html = $r.Content; $splits = \\([regex]::Matches\\($html, 'lp-split '\\)\\).Count; $slots = \\([regex]::Matches\\($html, 'lp-media-slot\"'\\)\\).Count; $bands = \\([regex]::Matches\\($html, 'lp-band-card'\\)\\).Count; Write-Output \"$p -> HTTP $\\($r.StatusCode\\) | splits: $splits | image-slots: $slots | bands: $bands\" } catch { Write-Output \"$p -> ERRO: $\\($_.Exception.Message\\)\" } })",
+      "PowerShell(foreach \\($p in @\\(\"/areas-de-atuacao\",\"/prostata-aumentada\",\"/vasectomia\",\"/pedra-no-rim\",\"/cancer-de-prostata\"\\)\\) { try { $r = Invoke-WebRequest -Uri \"http://localhost:3000$p\" -UseBasicParsing -TimeoutSec 90; $menuItem = if \\($r.Content -match '#condicoes-em-destaque'\\) {'AINDA NO MENU'} else {'removido do menu'}; $section = if \\($r.Content -match 'id=\"condicoes-em-destaque\"'\\) {'secao presente'} else {'-'}; Write-Output \"$p -> HTTP $\\($r.StatusCode\\) | $menuItem | $section\" } catch { Write-Output \"$p -> ERRO: $\\($_.Exception.Message\\)\" } })",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; foreach \\($f in @\\('vas.jpg','vas2.jpg'\\)\\) { $p = \"c:\\\\projetos\\\\drtalles\\\\public\\\\img\\\\$f\"; $img = [System.Drawing.Image]::FromFile\\($p\\); \"{0}: {1}x{2}\" -f $f, $img.Width, $img.Height; $img.Dispose\\(\\) })",
+      "PowerShell(npx tsc --noEmit -p tsconfig.json)",
+      "PowerShell(npx next lint --file src/app/vasectomia/page.tsx --file src/components/landing/lp-shared.tsx)",
+      "PowerShell(npx next build 2>&1)",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\(\"c:\\\\projetos\\\\drtalles\\\\public\\\\img\\\\prostata.jpg\"\\); \"prostata.jpg: {0}x{1}\" -f $img.Width, $img.Height; $img.Dispose\\(\\))",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\(\"c:\\\\projetos\\\\drtalles\\\\public\\\\img\\\\rin.jpg\"\\); \"rin.jpg: {0}x{1}\" -f $img.Width, $img.Height; $img.Dispose\\(\\))",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\(\"c:\\\\projetos\\\\drtalles\\\\public\\\\img\\\\can.jpg\"\\); \"can.jpg: {0}x{1}\" -f $img.Width, $img.Height; $img.Dispose\\(\\))"
     ]
   }
 }

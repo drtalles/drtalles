@@ -8,12 +8,17 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import { TrackedLink } from "@/components/analytics/TrackedLink";
 import {
   Activity,
+  ArrowRight,
   CalendarCheck,
+  ClipboardCheck,
   Dna,
+  Droplets,
   ExternalLink,
+  Gem,
   Heart,
   MessageCircle,
   Microscope,
+  Ribbon,
   ShieldPlus,
   User,
   Users,
@@ -114,6 +119,44 @@ const AREA_BLOCKS: AreaBlock[] = [
     text:
       "A uroginecologia contempla condições urológicas que também dialogam com a saúde feminina, especialmente em quadros funcionais e de suporte. O acompanhamento busca avaliar sintomas, organizar o diagnóstico e indicar a melhor condução para cada situação.",
     icon: Users,
+  },
+];
+
+type CondicaoCard = {
+  href: string;
+  title: string;
+  text: string;
+  icon: LucideIcon;
+};
+
+const CONDICOES_CARDS: CondicaoCard[] = [
+  {
+    href: "/prostata-aumentada",
+    title: "Próstata Aumentada (HPB)",
+    text:
+      "Jato urinário fraco, vontade de urinar toda hora ou sensação de bexiga cheia? Entenda a HPB e as possibilidades de tratamento.",
+    icon: Droplets,
+  },
+  {
+    href: "/vasectomia",
+    title: "Vasectomia",
+    text:
+      "Como funciona o procedimento, o que muda (e o que não muda) depois, e as etapas até a realização da vasectomia.",
+    icon: ClipboardCheck,
+  },
+  {
+    href: "/pedra-no-rim",
+    title: "Pedra no Rim e Cólica Renal",
+    text:
+      "Quando o cálculo urinário pode precisar de tratamento e como funciona a avaliação de pedras nos rins e ureteres.",
+    icon: Gem,
+  },
+  {
+    href: "/cancer-de-prostata",
+    title: "Câncer de Próstata e Cirurgia Robótica",
+    text:
+      "Possibilidades de tratamento, quando a prostatectomia radical robótica pode ser indicada e segunda opinião.",
+    icon: Ribbon,
   },
 ];
 
@@ -338,6 +381,53 @@ export default function AreasAtuacaoPage() {
             height: auto;
           }
 
+          .condicoes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+          }
+
+          .condicao-card {
+            display: flex;
+            flex-direction: column;
+            border-radius: 1rem;
+            border: 1px solid var(--color-neutral-200);
+            background: #fff;
+            padding: 1.2rem;
+            box-shadow: 0 8px 24px rgba(27,77,110,0.06);
+            text-decoration: none;
+            transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+          }
+
+          .condicao-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(46,196,182,0.72);
+            box-shadow: 0 12px 28px rgba(27,77,110,0.1);
+          }
+
+          .condicao-card p {
+            margin: 0;
+            color: var(--color-neutral-700);
+            font-size: 0.9rem;
+            line-height: 1.72;
+          }
+
+          .condicao-card-link {
+            margin-top: auto;
+            padding-top: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--color-accent-dark);
+            transition: gap 0.2s ease;
+          }
+
+          .condicao-card:hover .condicao-card-link {
+            gap: 0.65rem;
+          }
+
           .areas-cta {
             background: linear-gradient(135deg, var(--color-primary-dark) 0%, #163e5a 50%, var(--color-primary) 100%);
             position: relative;
@@ -380,7 +470,8 @@ export default function AreasAtuacaoPage() {
           }
 
           @media (max-width: 980px) {
-            .areas-grid {
+            .areas-grid,
+            .condicoes-grid {
               grid-template-columns: 1fr;
             }
           }
@@ -521,6 +612,65 @@ export default function AreasAtuacaoPage() {
                 width={420}
                 height={520}
               />
+            </div>
+          </div>
+        </section>
+
+        {/* Bloco: condições em destaque (landing pages) */}
+        <section
+          id="condicoes-em-destaque"
+          className="section-pad area-anchor-target"
+        >
+          <div className="container-site">
+            <div
+              style={{
+                textAlign: "center",
+                maxWidth: "760px",
+                marginInline: "auto",
+                marginBottom: "2rem",
+              }}
+            >
+              <p className="eyebrow" style={{ justifyContent: "center" }}>
+                Condições em destaque
+              </p>
+              <h2 style={{ marginBottom: "0.85rem" }}>
+                Entenda melhor algumas condições e procedimentos
+              </h2>
+              <p style={{ margin: 0, color: "var(--color-neutral-700)", lineHeight: 1.72 }}>
+                Páginas dedicadas para você entender sintomas, possibilidades de
+                tratamento e como funciona a avaliação em cada caso.
+              </p>
+            </div>
+
+            <div className="condicoes-grid">
+              {CONDICOES_CARDS.map((card) => {
+                const Icon = card.icon;
+                return (
+                  <Link key={card.href} href={card.href} className="condicao-card">
+                    <div className="area-card-head">
+                      <span className="area-icon" aria-hidden>
+                        <Icon size={17} />
+                      </span>
+                      <h3
+                        style={{
+                          margin: 0,
+                          fontFamily: "var(--font-body)",
+                          fontSize: "1rem",
+                          color: "var(--color-primary-dark)",
+                          lineHeight: 1.35,
+                        }}
+                      >
+                        {card.title}
+                      </h3>
+                    </div>
+                    <p>{card.text}</p>
+                    <span className="condicao-card-link">
+                      Saiba mais
+                      <ArrowRight size={15} aria-hidden />
+                    </span>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
