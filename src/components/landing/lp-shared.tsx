@@ -301,17 +301,20 @@ export const LP_STYLES = `
     padding-bottom: clamp(2.1rem, 4vw, 3.2rem);
   }
 
-  .lp-hero-inner { max-width: 900px; }
+  .lp-hero-inner { max-width: 100%; }
 
   .lp-hero .internal-hero-title {
     font-size: clamp(1.8rem, 3.4vw, 2.8rem);
     line-height: 1.18;
     letter-spacing: -0.01em;
-    max-width: 30ch;
+    max-width: 46ch;
     text-wrap: balance;
   }
 
-  .lp-hero .internal-hero-description { margin-top: 1.1rem; }
+  .lp-hero .internal-hero-description {
+    margin-top: 1.1rem;
+    max-width: 82ch;
+  }
 
   /* Seções em duas colunas (texto + mídia) */
   .lp-split {
